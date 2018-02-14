@@ -1,13 +1,7 @@
 What do I need for this app? Which is a knitting pattern app:
 
 #Models
-<<<<<<< HEAD
   User- username
-=======
-
-  User- username
-
->>>>>>> 666fed4fae8ee5b1cf8e5190e5e54fb941c630f1
   Pattern- user_id, name, content
   Needle- us_size, name
   Yarn- name, weight
@@ -23,8 +17,7 @@ What do I need for this app? Which is a knitting pattern app:
 #Views
   Users- show, index, new, edit
   Patterns- index, show, new, edit, destroy
-  Yarns- index 
-  Needles- index
+  Yarns- index Needles- index
 
 What is my goal for this app?
   WELCOME PAGE
