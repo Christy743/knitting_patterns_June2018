@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180215021847) do
+ActiveRecord::Schema.define(version: 20180215200849) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "pattern_id"
@@ -27,6 +27,10 @@ ActiveRecord::Schema.define(version: 20180215021847) do
     t.integer "pattern_id"
   end
 
+  create_table "other_notions", force: :cascade do |t|
+    t.string "notions"
+  end
+
   create_table "patterns", force: :cascade do |t|
     t.integer "user_id"
     t.string "name"
@@ -37,6 +41,7 @@ ActiveRecord::Schema.define(version: 20180215021847) do
     t.string "email", default: "", null: false
     t.string "password_digest"
     t.string "username"
+    t.string "bio"
   end
 
   create_table "yarns", force: :cascade do |t|
