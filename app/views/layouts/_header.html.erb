@@ -7,18 +7,18 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="#">Logo</a>
-      <% if !user_signed_in? %>
-      <h1>Welcome to Knit Patterns!</h1>
-      <% end %>
+
+
+
       <br></br>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
-      <% if user_signed_in? %>
+
       <ul class="nav navbar-nav">
-          <li><%= link_to "Sign out", sign_out_path, method: "delete" %></li>
+
           <br></br>
       </ul>
-      <% end %>
+
     </div>
   </div>
 </nav>
