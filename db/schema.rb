@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180215200849) do
+ActiveRecord::Schema.define(version: 20180216034737) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "pattern_id"
@@ -42,6 +42,9 @@ ActiveRecord::Schema.define(version: 20180215200849) do
     t.string "password_digest"
     t.string "username"
     t.string "bio"
+    t.string "name"
+    t.string "image"
+    t.string "uid"
   end
 
   create_table "yarns", force: :cascade do |t|
