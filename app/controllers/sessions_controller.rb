@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
         flash.now[:notice] = "Could not find that person, sorry!"
         render :new
       end
-    elsif request.env['omniauth.auth'].present?
+    else request.env['omniauth.auth'].present?
       user = User.find_or_create_by_omniauth(request.env['omniauth.auth'])
       session[:user_id] = user.id
       redirect_to root_path
