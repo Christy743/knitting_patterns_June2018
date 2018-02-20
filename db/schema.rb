@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180216061318) do
+ActiveRecord::Schema.define(version: 20180219235019) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "pattern_id"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 20180216061318) do
     t.string "provider"
     t.string "oauth_token"
     t.datetime "oauth_expires_at"
+    t.string "remember_digest"
   end
 
   create_table "yarns", force: :cascade do |t|

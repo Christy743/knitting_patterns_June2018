@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   get "/auth/:provider/callback", to: "sessions#create"
 
   get '/signin' => 'sessions#new'
-  post '/signin' => 'sessions#new'
-  post '/sessions' => 'sessions#create'
+  post '/signin' => 'sessions#create'
+  #post '/sessions' => 'sessions#create'
   delete '/signout' => 'sessions#destroy'
 
   root "application#welcome"
