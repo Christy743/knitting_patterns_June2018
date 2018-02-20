@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
                     uniqueness: true
   #validates :username, uniqueness: true
   validates :password, length: { in: 6..72 }
-  validates :bio, length: { maximum: 250 }
+  #validates :bio, length: { maximum: 250 }
 
 
   def self.find_or_create_by_omniauth(auth_hash)
