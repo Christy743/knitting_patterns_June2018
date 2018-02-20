@@ -5,21 +5,21 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if params[:session][:email] && params[:session][:password]
-      user = User.find_by(:email => params[:session][:email])
+    if request.env["omniauth.auth"]
+      user = User.find_or_create_by_omniauth(request.env['omniauth.auth'])
+      session[:user_id] = user.id
+      redirect_to root_path
+    elsif params[:session][:email] && params[:session][:password]
+    user = User.find_by(:email => params[:session][:email])
       if user && user.authenticate(params[:session][:password])
         session[:user_id] = user.id
         #remember user
-        params[:session][:remember_me] == '1' ? remember(user) : forget(user)
+        #params[:session][:remember_me] == '1' ? remember(user) : forget(user)
         redirect_to root_path
       else
         flash.now[:notice] = "Could not find that person, sorry!"
         render :new
       end
-    else request.env["omniauth.auth"].present?
-      user = User.find_or_create_by_omniauth(request.env['omniauth.auth'])
-      session[:user_id] = user.id
-      redirect_to root_path
     end
   end
 

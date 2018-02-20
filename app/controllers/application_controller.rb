@@ -6,15 +6,15 @@ class ApplicationController < ActionController::Base
   def welcome
   end
 
-  #def authenticate
-  #  redirect_to signin_path unless logged_in?
-  #end
-
-  def remember(user)
-    user.remember
-    cookies.permanent.signed[:user_id] = user.id
-    cookies.permanent[:remember_token] = user.remember_token
+  def authenticate
+    redirect_to signin_path unless logged_in?
   end
+
+  #def remember(user)
+  #  user.remember
+  #  cookies.permanent.signed[:user_id] = user.id
+  #  cookies.permanent[:remember_token] = user.remember_token
+  #end
 
   def logged_in?
     !!current_user
