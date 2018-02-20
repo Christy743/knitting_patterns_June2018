@@ -4,5 +4,5 @@ class Pattern < ActiveRecord::Base
   has_many :yarns
   has_many :comments
 
-  validates_presence_of :name, :content
+  #validates_presence_of :name, :content
 end

@@ -35,6 +35,7 @@ gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'dotenv-rails'
 gem 'omniauth-github'
+gem 'pry-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

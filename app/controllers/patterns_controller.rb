@@ -5,7 +5,7 @@ class PatternsController < ApplicationController
   end
 
   def show
-    @pattern = Pattern.find(params [:id])
+    @pattern = Pattern.find(params[:id])
   end
 
   def new
@@ -13,6 +13,7 @@ class PatternsController < ApplicationController
   end
 
   def create
+    #binding.pry
     @pattern = Pattern.new(pattern_params)
     if @pattern.save
       redirect_to pattern_path, notice: "You have successfully made a pattern!"
@@ -21,10 +22,24 @@ class PatternsController < ApplicationController
     end
   end
 
+  def edit
+    @pattern = Pattern.find(params[:id])
+  end
+
+  def update
+    @pattern = Pattern.find(params[:id])
+
+    if @pattern.update(pattern_params)
+      redirect_to @pattern, notice: "Pattern successfully updated."
+    else
+      render :edit
+    end 
+  end
+
   private
 
   def pattern_params
-    params.require(:pattern).permit(:name, :content)
+    params.require(:pattern).permit(:name, :content, :user_id)
   end
 
 end

@@ -1,3 +1,11 @@
 <h3>Your Project</h3>
 
-<%= current_user.email %>
+<% if current_user %>
+
+<p>Name: </p>
+<%= @project.name %>
+
+<p>Directions: </p>
+<%= @project.content %>
+
+<% end %>
