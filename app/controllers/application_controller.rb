@@ -10,10 +10,6 @@ class ApplicationController < ActionController::Base
   #  redirect_to signin_path unless logged_in?
   #end
 
-  def sign_in(user)
-    session[:user_id] = user.id
-  end
-
   def remember(user)
     user.remember
     cookies.permanent.signed[:user_id] = user.id
@@ -36,7 +32,6 @@ class ApplicationController < ActionController::Base
     elsif (user_id = cookies.signed[:user_id])
       user = User.find_by(id: user_id)
       if user && user.authenticated?(cookies[:remember_token])
-        sign_in user
         @current_user = user
       end
     end
@@ -48,6 +43,5 @@ class ApplicationController < ActionController::Base
     cookies.delete(:user_id)
     cookies.delete(:remember_token)
   end
-
 
 end
