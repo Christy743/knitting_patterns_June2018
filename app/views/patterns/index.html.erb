@@ -1,1 +1,16 @@
 <h3>Pattern List</h3>
+
+<br />
+
+<ul>
+  <% @patterns.each_with_index do |pattern, i| %>
+    <%= i + 1 %>. <%= link_to pattern.name.capitalize, pattern_path(@pattern) %><br></br>
+  <% end %>
+</ul>
+
+<br />
+<br />
+
+<% if current_user.patterns.count == 0 %>
+  <p>You have no projects. Click on 'New Pattern' to create a new knitting pattern.</p>
+<% end %>

@@ -1,11 +1,18 @@
-<h3>Your Project</h3>
-
 <% if current_user %>
 
+<h3>Your Project</h3>
+
 <p>Name: </p>
-<%= @project.name %>
+<%= @pattern.name %>
 
 <p>Directions: </p>
-<%= @project.content %>
+<%= @pattern.content %>
+
+<br></br>
+<%= link_to "Edit this Pattern", edit_pattern_path %>
+
+<br></br>
+
+<%= link_to "Destroy", pattern_path, method: :delete, alert: { confirm: "Are you sure?" } %>
 
 <% end %>
