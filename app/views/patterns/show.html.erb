@@ -1,12 +1,15 @@
-<% if current_user %>
 
-<h3>Your Project</h3>
 
-<p>Name: </p>
-<%= @pattern.name %>
+<h3><%= @pattern.name %></h3>
+
+<p>Materials and notions</p>
 
 <p>Directions: </p>
 <%= @pattern.content %>
+
+<br></br>
+
+<% if current_user == @pattern.user %>
 
 <br></br>
 <%= link_to "Edit this Pattern", edit_pattern_path %>
@@ -17,4 +20,6 @@
 
 <% end %>
 
-<%= link_to "Back", patterns_path %>
+<br></br>
+
+<%= link_to "Back to Pattern List", patterns_path %>
