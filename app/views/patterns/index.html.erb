@@ -4,7 +4,7 @@
 
 <ul>
   <% @patterns.each_with_index do |pattern, i| %>
-    <%= i + 1 %>. <%= link_to pattern.name.capitalize, pattern_path(@pattern) %><br></br>
+    <%= i + 1 %>. <%= link_to pattern.name.capitalize, pattern_path(pattern.id) %><br></br>
   <% end %>
 </ul>
 

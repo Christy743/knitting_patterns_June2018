@@ -5,10 +5,8 @@
   <% end %>
 <br></br>
 
-  <%= link_to "Pattern List", patterns_path %>
-
-  <br></br>
-
   <% if current_user %>
     <%= link_to "New Pattern", new_pattern_path %>
+    <br></br>
+    <%= link_to "Pattern List", patterns_path %>
   <% end %>
