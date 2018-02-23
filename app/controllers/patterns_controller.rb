@@ -2,7 +2,6 @@ class PatternsController < ApplicationController
 
   def index
     @patterns = Pattern.all
-    @needles = Needle.all
     #binding.pry
   end
 
@@ -13,7 +12,6 @@ class PatternsController < ApplicationController
 
   def new
     @pattern = Pattern.new
-    @needle = Needle.new
   end
 
   def create

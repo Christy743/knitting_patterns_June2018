@@ -32,3 +32,16 @@ What is my goal for this app?
     EDIT PATTERN PAGE
     PATTERN INDEX PAGE
     CURRENT USER PROFILE/PATTERN PAGE
+
+    NEEDLE PAGE
+      Add a needle
+      Put this into the create a pattern page
+      Scroll down list or add a needle function
+
+    YARN PAGE
+      Add a yarn
+      Put this into the create a pattern page
+      Scroll down list or add a needle function
+
+    Should I put in categories for my patterns?
+    
