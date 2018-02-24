@@ -8,10 +8,13 @@ class PatternsController < ApplicationController
   def show
     #binding.pry
     @pattern = Pattern.find(params[:id])
+    #@needle = Needle.find(params[:id])
+    #binding.pry
   end
 
   def new
     @pattern = Pattern.new
+    @needle = Needle.new
   end
 
   def create
@@ -47,7 +50,7 @@ class PatternsController < ApplicationController
   private
 
   def pattern_params
-    params.require(:pattern).permit(:name, :content, :user_id, :id, :bio)
+    params.require(:pattern).permit(:name, :content, :user_id, :id, :bio, needles_id: [:name, :us_size])
   end
 
 end

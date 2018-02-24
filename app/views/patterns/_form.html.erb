@@ -14,24 +14,30 @@
     </div>
   <% end %>
 
-  <%= f.label :name %>
+  <%= f.label :name, "Pattern Name" %><br></br>
   <%= f.text_field :name, class: "form-control" %>
 
   <br></br>
-  this may be a good place for the requirement:
+  <!-- this may be a good place for the requirement:
   The "through" part of the has_many through includes at least one
-  user submittable attribute (attribute_name e.g. ingredients.quantity
+  user submittable attribute (attribute_name e.g. ingredients.quantity -->
 
-  <br></br>
-  <%= f.label :content %>
+  <%= f.label :content, "Pattern Directions" %><br></br>
   <%= f.text_area :content, class: "form-control" %>
   <br></br>
-
+  <%= f.label :needle_id, "Select knitting needles for your pattern: ", class: "col-form-label" %><br></br>
+  <%= f.collection_select :needle, Needle.all, :id, :name, include_blank: true, class: "form-control" %>
+  <%= f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name %>
+  <br>
+  <p>or, add knitting needles that are not included in this list:</p>
+  <%= link_to "Add Knitting Needles", new_needle_path %>
+  <br></br>
   <%= f.submit class: "btn btn-primary" %>
 <% end %>
+
 </div>
 </div>
 
 
-Eventually put in comments, yarns and needles and possibly other notions like ribbon,
-sewing needles, tapestry needles, etc. Need another table for other notions.
+<!-- Eventually put in comments, yarns and needles and possibly other notions like ribbon,
+sewing needles, tapestry needles, etc. Need another table for other notions. -->

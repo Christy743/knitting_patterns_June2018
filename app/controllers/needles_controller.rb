@@ -23,6 +23,26 @@ class NeedlesController < ApplicationController
     end
   end
 
+  def edit
+    @needle = Needle.find(params[:id])
+  end
+
+  def update
+    @needle = Needle.find(params[:id])
+
+    if @needle.update(needle_params)
+      redirect_to @needle, notice: "Needle successfully updated."
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @needle = Needle.find(params[:id])
+    @needle.destroy
+    redirect_to root_path
+  end
+
   private
 
   def needle_params

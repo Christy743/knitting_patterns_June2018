@@ -4,7 +4,7 @@
   <% if @needle.errors.any? %>
     <div id="error_explanation">
       <div class="alert alert-danger">
-    <h3><%= pluralize(@needle.errors.count, "error") %> prohibited this pattern from being saved: </h3>
+    <h3><%= pluralize(@needle.errors.count, "error") %> prohibited these knitting needles from being saved: </h3>
       </div>
       <ul>
         <% @needle.errors.full_messages.each do |message| %>
@@ -14,12 +14,12 @@
     </div>
   <% end %>
 
-  <%= f.label :name %>
+  <%= f.label :name, "Knitting Needle Name" %><br></br>
   <%= f.text_field :name, class: "form-control" %>
   <br></br>
-  <%= f.label :us_size %>
+  <%= f.label :us_size, "US Needle Size" %><br></br>
   <%= f.text_field :us_size, class: "form-control" %>
-
+  <br></br>
   <%= f.submit class: "btn btn-primary" %>
 <% end %>
 </div>

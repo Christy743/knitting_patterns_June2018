@@ -16,9 +16,15 @@
 
  /* forms */
 
+ body {
+   padding-left: 50px;
+   padding-right: 50px;
+   background: linear-gradient(#E4C9F3, white);
+ }
+
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
-  width: 50%;
+  width: 20%;
   margin-bottom: 15px;
   @include box_sizing;
 }
