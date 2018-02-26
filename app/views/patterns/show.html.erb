@@ -1,11 +1,22 @@
-
-
 <h3><%= @pattern.name %></h3>
 
-<h4>Materials and notions:</h4>
-<h5>Knitting Needles</h5>
-<%= @needle.name %>
-<%= @needle.us_size %>
+<h5>Materials and notions:</h5>
+  <% @other_notions.each do |notion| %>
+    <%= notion.notions %><br></br>
+  <% end %>
+
+<h5>Knitting Needles:</h5>
+  <% @needles.each do |needle| %>
+      <%= needle.name %>
+      <%= needle.us_size %><br></br>
+  <% end %>
+
+<h5>Yarns:</h5>
+  <% @yarns.each do |yarn| %>
+    <%= yarn.name %><br>
+    <%= yarn.weight %><br>
+    <%= yarn.quantity %><br></br>
+  <% end %>
 
 <p>Directions: </p>
 <%= @pattern.content %>

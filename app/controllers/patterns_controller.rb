@@ -8,17 +8,28 @@ class PatternsController < ApplicationController
   def show
     #binding.pry
     @pattern = Pattern.find(params[:id])
-    #@needle = Needle.find(params[:id])
+    @needles = @pattern.needles
+    @yarns = @pattern.yarns
+    @other_notions = @pattern.other_notions
     #binding.pry
   end
 
   def new
     @pattern = Pattern.new
-    @needle = Needle.new
+    2.times { @pattern.needles.new }
+    2.times { @pattern.yarns.new }
+    4.times { @pattern.other_notions.new }
+    #@needles = Needle.all
+    #@pattern.needle.build
+    #@needle = Needle.new
   end
 
   def create
+    #user_id = current_user
     @pattern = current_user.patterns.new(pattern_params)
+    @pattern.needles.new
+    @pattern.yarns.new
+    @pattern.other_notions.new
     #binding.pry
     if @pattern.save
       redirect_to pattern_path(@pattern), notice: "You have successfully made a pattern!"
@@ -50,7 +61,11 @@ class PatternsController < ApplicationController
   private
 
   def pattern_params
-    params.require(:pattern).permit(:name, :content, :user_id, :id, :bio, needles_id: [:name, :us_size])
+    params.require(:pattern).permit(:name, :content, :user_id, :id, :needle_ids, :yarn_ids,
+      needles_attributes: [:name, :us_size],
+      yarns_attributes: [:name, :weight, :quantity],
+      other_notions_attributes: [:notions]
+      )
   end
 
 end
