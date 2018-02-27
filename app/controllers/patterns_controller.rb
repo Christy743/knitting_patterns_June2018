@@ -2,7 +2,7 @@ class PatternsController < ApplicationController
 
   def index
     @patterns = Pattern.all
-    @categories = Category.all
+    #@categories = Category.all
     #binding.pry
   end
 
@@ -13,7 +13,6 @@ class PatternsController < ApplicationController
     @yarns = @pattern.yarns
     @other_notions = @pattern.other_notions
     @comment = Comment.new
-    @category = Category.new
     #binding.pry
   end
 
@@ -22,7 +21,7 @@ class PatternsController < ApplicationController
     2.times { @pattern.needles.new }
     2.times { @pattern.yarns.new }
     4.times { @pattern.other_notions.new }
-    @pattern.categories.new
+    #@pattern.categories.new
     #@needles = Needle.all
     #@pattern.needle.build
     #@needle = Needle.new
@@ -34,7 +33,7 @@ class PatternsController < ApplicationController
     @pattern.needles.new
     @pattern.yarns.new
     @pattern.other_notions.new
-    @pattern.categories.new
+    #@pattern.categories.new
     #binding.pry
     if @pattern.save
       redirect_to pattern_path(@pattern), notice: "You have successfully made a pattern!"
@@ -45,6 +44,10 @@ class PatternsController < ApplicationController
 
   def edit
     @pattern = Pattern.find(params[:id])
+    @needles = Needle.find_all
+    @yarns = Yarn.find_all
+    @other_notions = OtherNotions.find_all
+    #@categories = Category.find_all
   end
 
   def update
@@ -69,8 +72,8 @@ class PatternsController < ApplicationController
     params.require(:pattern).permit(:name, :content, :user_id, :id, :needle_ids, :yarn_ids,
       needles_attributes: [:name, :us_size],
       yarns_attributes: [:name, :weight, :quantity],
-      other_notions_attributes: [:notions],
-      category_ids:[], categories_attributes: [:name]
+      other_notions_attributes: [:notions]#,
+      #category_ids:[], categories_attributes: [:name]
       )
   end
 

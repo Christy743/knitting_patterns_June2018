@@ -1,13 +1,12 @@
 class Pattern < ActiveRecord::Base
   belongs_to :user
+  belongs_to :category
   has_many :needles
   has_many :yarns
   has_many :other_notions
   has_many :comments
   has_many :users, through: :comments
   has_many :favorite_patterns
-  has_many :pattern_categories
-  has_many :categories, through: :pattern_categories
 
   #accepts_nested_attributes_for :needles, reject_if: :all_blank
 
