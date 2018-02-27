@@ -45,7 +45,7 @@
   <%= f.fields_for :other_notions do |notion_builder| %>
 
     <%= notion_builder.label :notions, "Notion or Materials Name" %><br></br>
-    <%= notion_builder.text_field :notions, class: "form-control" %><br></br> 
+    <%= notion_builder.text_field :notions, class: "form-control" %><br></br>
 
   <% end %>
 
@@ -56,6 +56,11 @@
   <%= f.label :content, "Pattern Directions" %><br></br>
   <%= f.text_area :content, class: "form-control" %>
   <br></br>
+
+  <%= f.collection_check_boxes :category_ids, Category.all, :id, :name %><br />
+  <%= f.fields_for :categories, @pattern.categories.build do |categories_fields| %>
+    Create new category:<%= categories_fields.text_field :name %>
+  <% end %>
 
   <%= f.submit class: "btn btn-primary" %>
 <% end %>

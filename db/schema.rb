@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180226234712) do
+ActiveRecord::Schema.define(version: 20180227040338) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -36,6 +36,11 @@ ActiveRecord::Schema.define(version: 20180226234712) do
   create_table "other_notions", force: :cascade do |t|
     t.string "notions"
     t.integer "pattern_id"
+  end
+
+  create_table "pattern_categories", force: :cascade do |t|
+    t.integer "pattern_id"
+    t.integer "category_id"
   end
 
   create_table "patterns", force: :cascade do |t|
