@@ -23,6 +23,31 @@
 
 <br></br>
 
+Comments:<br></br>
+<ul>
+  <% @pattern.grouped_comments.each do |username, comments| %>
+    <li><%= link_to username, user_path(comments.first.user) %> says:
+      <ul>
+        <% comments.each do |comment| %>
+          <li><%= comment.content %></li>
+        <% end %>
+      </ul>
+  <% end %>
+</ul>
+
+<%= form_for @comment do |f| %>
+  <%= f.label :create_new_comment %><br>
+  <%= f.text_area :content %><br>
+
+  <%= f.label :user %>
+  <%= f.collection_select :user_id, User.all, :id, :username, include_blank: true %><br>
+
+
+  <%= f.text_area :pattern_id, value: @pattern.id, hidden: true %>
+
+  <%= f.submit %>
+<% end %>
+
 <% if current_user == @pattern.user %>
 
 <br></br>

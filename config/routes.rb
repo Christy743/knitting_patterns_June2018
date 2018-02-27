@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   root "application#welcome"
 
   resources :users
-
   resources :patterns
+  resources :comments
+  resources :categories
 end

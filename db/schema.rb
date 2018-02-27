@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180226214439) do
+ActiveRecord::Schema.define(version: 20180226234712) do
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+  end
 
   create_table "comments", force: :cascade do |t|
     t.integer "pattern_id"
+    t.integer "user_id"
+    t.string "content"
   end
 
   create_table "favorite_patterns", force: :cascade do |t|

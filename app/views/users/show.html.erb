@@ -3,6 +3,16 @@
 <%= @user.email %>
 <br></br>
 <%= @user.bio %>
+
+<h1><%= @user.username %></h1>
+
+<h2>Patterns commented on:</h2>
+
+<ul>
+  <% @user.patterns.each do |pattern| %>
+    <li><%= link_to pattern.name, pattern_path(pattern) %></li>
+  <% end %>
+</ul>
 <br></br>
 	<% if current_user = @user.id %>
 		<%= link_to "Edit your profile", edit_user_path %>

@@ -4,7 +4,10 @@ class Pattern < ActiveRecord::Base
   has_many :yarns
   has_many :other_notions
   has_many :comments
+  has_many :users, through: :comments
   has_many :favorite_patterns
+  has_many :pattern_categories
+  has_many :categories, through: :pattern_categories
 
   #accepts_nested_attributes_for :needles, reject_if: :all_blank
 
@@ -29,6 +32,29 @@ class Pattern < ActiveRecord::Base
   def other_notions_attributes=(other_notions_attributes)
     other_notions_attributes.each do |i, other_notion_attributes|
       self.other_notions.build(other_notion_attributes)
+    end
+  end
+
+  def grouped_comments
+    grouped_comments_hash = {}
+    self.comments.each do |comment|
+      if grouped_comments_hash.keys.include?(comment.user.username)
+        grouped_comments_hash[comment.user.username] << comment
+      else
+        grouped_comments_hash[comment.user.username] = [comment]
+      end
+    end
+    grouped_comments_hash
+  end
+
+  def categories_attributes=(categories_hashes)
+    categories_hashes.each do |i, category_attributes|
+    if category_attributes[:name].present?
+      category = Category.find_or_create_by(name: category_attributes[:name])
+      if !self.categories.include?(category)
+       self.pattern_categories.build(:category => category)
+      end
+     end
     end
   end
 
