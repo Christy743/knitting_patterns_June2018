@@ -1,6 +1,8 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-<%= form_for (@pattern) do |f| %>
+
+<%= form_for @pattern do |f| %>
+
   <% if @pattern.errors.any? %>
     <div id="error_explanation">
       <div class="alert alert-danger">
@@ -14,40 +16,12 @@
     </div>
   <% end %>
 
+<div id="scroll-list" style="overflow:scroll; height:500px;">
   <%= f.label :name, "Pattern Name" %><br></br>
   <%= f.text_field :name, class: "form-control" %>
 
   <br></br>
 
-  <%= f.fields_for :needles do |needle_builder| %>
-
-    <%= needle_builder.label :name, "Needle Type" %><br></br>
-    <%= needle_builder.text_field :name, class: "form-control" %><br></br>
-
-    <%= needle_builder.label :us_size %><br></br>
-    <%= needle_builder.number_field :us_size, class: "form-control" %><br></br>
-
-  <% end %>
-
-  <%= f.fields_for :yarns do |yarn_builder| %>
-
-    <%= yarn_builder.label :name, "Yarn Name" %><br></br>
-    <%= yarn_builder.text_field :name, class: "form-control" %><br></br>
-
-    <%= yarn_builder.label :weight, "Yarn Weight" %><br></br>
-    <%= yarn_builder.text_field :weight, class: "form-control" %><br></br>
-
-    <%= yarn_builder.label :quantity, "Yarn Quantity" %><br></br>
-    <%= yarn_builder.number_field :quantity, class: "form-control" %><br></br>
-
-  <% end %>
-
-  <%= f.fields_for :other_notions do |notion_builder| %>
-
-    <%= notion_builder.label :notions, "Notion or Materials Name" %><br></br>
-    <%= notion_builder.text_field :notions, class: "form-control" %><br></br>
-
-  <% end %>
 
   <!-- this may be a good place for the requirement:
   The "through" part of the has_many through includes at least one
@@ -57,9 +31,12 @@
   <%= f.text_area :content, class: "form-control" %>
   <br></br>
 
+  <%= f.hidden_field :user_id, value: @user %>
+
   <%= f.submit class: "btn btn-primary" %>
 <% end %>
 
+</div>
 </div>
 </div>
 

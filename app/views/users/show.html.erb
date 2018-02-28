@@ -1,20 +1,8 @@
-<% if current_user %>
-<br></br>
-<%= @user.email %>
-<br></br>
-<%= @user.bio %>
+<% if current_user = @user.id %><br />
+  <h2><%= @user.username %>'s Profile</h2>
+  <p>Email address: <%= @user.email %></p>
+  <p>Bio: <%= @user.bio %></p><br />
 
-<h1><%= @user.username %></h1>
+  <%= link_to "Edit your profile", edit_user_path %>
 
-<h2>Patterns commented on:</h2>
-
-<ul>
-  <% @user.patterns.each do |pattern| %>
-    <li><%= link_to pattern.name, pattern_path(pattern) %></li>
-  <% end %>
-</ul>
-<br></br>
-	<% if current_user = @user.id %>
-		<%= link_to "Edit your profile", edit_user_path %>
-	<% end %>
 <% end %>

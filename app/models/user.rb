@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
 
   has_many :patterns
-  has_many :favorite_patterns, through: :patterns
+  #has_many :favorite_patterns, through: :patterns
   has_many :comments
   has_many :patterns, through: :comments
 
@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
   #validates :username, uniqueness: true
   validates :password, length: { in: 6..72 }
   #validates :bio, length: { maximum: 250 }
+
+  #accepts_nested_attributes_for :patterns, reject_if: :all_blank
 
 
   def self.find_or_create_by_omniauth(auth_hash)

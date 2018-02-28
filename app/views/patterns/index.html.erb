@@ -1,20 +1,17 @@
-<h3>Pattern List</h3>
+<h2>Pattern List</h2><br />
 
-<br />
-
-<ul>
-  <% @patterns.each_with_index do |pattern, i| %>
-    <%= i + 1 %>. <%= link_to pattern.name.capitalize, pattern_path(pattern.id) %><br></br>
-  <% end %>
-</ul>
-
-<br />
+  <div id="scroll-list" style="overflow:scroll; height:400px;">
+    <ul>
+      <% @patterns.each_with_index do |pattern, i| %>
+        <%= i + 1 %>. <%= link_to pattern.name.capitalize, pattern_path(pattern.id) %><br></br>
+      <% end %>
+    </ul>
+  </div>
 <br />
 
 <% if current_user %>
-  <%= link_to "New Pattern", new_pattern_path %>
-<% end %>
-
-<% if current_user.patterns.count == 0 %>
-  <p>You have no projects. Click on 'New Pattern' to create a new knitting pattern.</p>
+  <%= link_to "To Make a New Pattern", new_pattern_path %>
+    <% if current_user.patterns.count == 0 %>
+      <p><%= current_user.username %>, you have no projects. Click on the link above, if you would like to make a new knitting pattern.</p>
+    <% end %>
 <% end %>

@@ -1,12 +1,11 @@
 class Pattern < ActiveRecord::Base
-  belongs_to :user
-  belongs_to :category
-  has_many :needles
-  has_many :yarns
-  has_many :other_notions
+  belongs_to :user #, optional: true
+  #has_many :needles
+  #has_many :yarns
+  #has_many :other_notions
   has_many :comments
   has_many :users, through: :comments
-  has_many :favorite_patterns
+  #has_many :favorite_patterns
 
   #accepts_nested_attributes_for :needles, reject_if: :all_blank
 
@@ -44,17 +43,6 @@ class Pattern < ActiveRecord::Base
       end
     end
     grouped_comments_hash
-  end
-
-  def categories_attributes=(categories_hashes)
-    categories_hashes.each do |i, category_attributes|
-    if category_attributes[:name].present?
-      category = Category.find_or_create_by(name: category_attributes[:name])
-      if !self.categories.include?(category)
-       self.pattern_categories.build(:category => category)
-      end
-     end
-    end
   end
 
 end

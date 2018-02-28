@@ -1,23 +1,5 @@
 <h3><%= @pattern.name %></h3>
 
-<h5>Materials and notions:</h5>
-  <% @other_notions.each do |notion| %>
-    <%= notion.notions %><br></br>
-  <% end %>
-
-<h5>Knitting Needles:</h5>
-  <% @needles.each do |needle| %>
-      <%= needle.name %>
-      <%= needle.us_size %><br></br>
-  <% end %>
-
-<h5>Yarns:</h5>
-  <% @yarns.each do |yarn| %>
-    <%= yarn.name %><br>
-    <%= yarn.weight %><br>
-    <%= yarn.quantity %><br></br>
-  <% end %>
-
 <p>Directions: </p>
 <%= @pattern.content %>
 
@@ -44,6 +26,11 @@ Comments:<br></br>
 
 
   <%= f.text_area :pattern_id, value: @pattern.id, hidden: true %>
+
+  <%= fields_for :favorite_patterns do |fp_builder| %>
+    <%= fp_builder.label :favorite_patterns, "Make this pattern your favorite" %>
+    <%= fp_builder.check_box :favorite_patterns, :checked => resolve_boolean_parameter(:user, :favorite_patterns, default: false)  %>
+  <% end %>
 
   <%= f.submit %>
 <% end %>

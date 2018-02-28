@@ -13,5 +13,13 @@ Rails.application.routes.draw do
   resources :users
   resources :patterns
   resources :comments
-  resources :categories
+
+  resources :patterns do
+    resources :favorite_patterns
+  end
+
+  #resources :users do
+  #  resources :needles, :yarns, :other_notions
+  #end 
+
 end
