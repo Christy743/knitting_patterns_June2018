@@ -12,7 +12,14 @@ Rails.application.routes.draw do
 
   resources :users
   resources :patterns
-  resources :comments
+
+  resources :comments do
+    resources :comments
+  end
+
+  resources :patterns do
+    resources :comments
+  end
 
   #resources :patterns do
   #  resources :favorite_patterns

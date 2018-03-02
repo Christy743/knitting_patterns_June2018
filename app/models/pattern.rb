@@ -1,6 +1,6 @@
 class Pattern < ActiveRecord::Base
   belongs_to :user
-  has_many :comments
+  has_many :comments, as: :commentable
   #has_many :users, through: :comments
   #has_many :favorite_patterns
 

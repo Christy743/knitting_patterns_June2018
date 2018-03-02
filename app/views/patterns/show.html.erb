@@ -15,35 +15,12 @@ qty: <%= @pattern.quantity %>
 <p>Directions: </p>
 <%= @pattern.content %><br></br>
 
-Comments:<br></br>
-<ul>
-  <% @pattern.grouped_comments.each do |username, comments| %>
-    <li><%= link_to username, user_path(comments.first.user) %> says:
-      <ul>
-        <% comments.each do |comment| %>
-          <li><%= comment.content %></li>
-        <% end %>
-      </ul>
-  <% end %>
+<h2>Comments</h2>
+<p><%= link_to "Add a Comment", new_pattern_comment_path(@pattern) %></p>
+
+<ul class="comment_list">
+  <%= render partial: "comments/comment", collection: @pattern.comments %>
 </ul>
-
-<%= form_for @comment do |f| %>
-  <%= f.label :create_new_comment %><br>
-  <%= f.text_area :content %><br>
-
-  <%= f.label :user %>
-  <%= f.collection_select :user_id, User.all, :id, :username, include_blank: true %><br>
-
-
-  <%= f.text_area :pattern_id, value: @pattern.id, hidden: true %>
-
-  <%= fields_for :favorite_patterns do |fp_builder| %>
-    <%= fp_builder.label :favorite_patterns, "Make this pattern your favorite" %>
-    <%= fp_builder.check_box :favorite_patterns, :checked => resolve_boolean_parameter(:user, :favorite_patterns, default: false)  %>
-  <% end %>
-
-  <%= f.submit %>
-<% end %>
 
 <% if current_user == @pattern.user %>
 

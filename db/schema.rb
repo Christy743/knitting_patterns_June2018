@@ -10,12 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180302044135) do
+ActiveRecord::Schema.define(version: 20180302191414) do
 
   create_table "comments", force: :cascade do |t|
-    t.integer "pattern_id"
-    t.integer "user_id"
     t.string "content"
+    t.string "title"
+    t.integer "commentable_id"
+    t.string "commentable_type"
+    t.datetime "created_at"
+    t.datetime "update_at"
   end
 
   create_table "favorite_patterns", force: :cascade do |t|
