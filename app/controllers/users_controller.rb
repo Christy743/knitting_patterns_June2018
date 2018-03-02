@@ -3,11 +3,12 @@ class UsersController < ApplicationController
   #before_action :authenticate
 
   def index
+    @patterns = Pattern.all
   end
 
   def show
     @user = User.find(params[:id])
-    #@patterns = @user.patterns
+    @patterns = @user.patterns
   end
 
   def new

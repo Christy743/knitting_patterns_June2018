@@ -3,6 +3,10 @@
   <p>Email address: <%= @user.email %></p>
   <p>Bio: <%= @user.bio %></p><br />
 
+  <% @user.patterns.each_with_index do |pattern, i| %>
+    <%= i + 1 %>. <%= link_to pattern.name.capitalize, pattern_path(pattern.id) %><br></br>
+  <% end %>
+
   <%= link_to "Edit your profile", edit_user_path %>
 
 <% end %>

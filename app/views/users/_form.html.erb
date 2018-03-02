@@ -1,6 +1,8 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
+
 <%= form_for @user do |f| %>
+
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <div class="alert alert-danger">
@@ -14,21 +16,24 @@
       </div>
   <% end %>
 
-  <%= f.label :email %><br></br>
-  <%= f.text_field :email, class: "form-control" %>
-  <br></br>
-  <%= f.label :password %><br></br>
-  <%= f.password_field :password, class: "form-control" %>
-  <br></br>
-  <%= f.label :password_confirmation %><br></br>
-  <%= f.password_field :password_confirmation, class: "form-control" %>
-  <br></br>
-  <%= f.label :bio %><br></br>
-  <%= f.text_area :bio, class: "form-control" %>
-  <br></br>
+  <div class="sign-up-form-1">
+    <%= f.label :email %><br></br>
+    <%= f.text_field :email, class: "form-control" %>
+      <br></br>
+    <%= f.label :password %><br></br>
+    <%= f.password_field :password, class: "form-control" %>
+      <br></br>
+    <%= f.label :password_confirmation %><br></br>
+    <%= f.password_field :password_confirmation, class: "form-control" %>
+      <br></br>
+    <%= f.label :bio %><br></br>
+    <%= f.text_area :bio, class: "form-control" %>
+      <br></br>
 
-  <%= f.submit class: "btn btn-primary" %>
+    <%= f.submit class: "btn btn-primary" %>
+  </div>
 
 <% end %>
+
   </div>
 </div>

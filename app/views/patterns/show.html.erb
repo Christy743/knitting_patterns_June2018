@@ -1,19 +1,16 @@
 <h3><%= @pattern.name %></h3>
 
-<br></br>
-
 <h5>Materials and notions:</h5>
 <%= @pattern.materials %>
 
 <h5>Knitting Needles:</h5>
-<%= @pattern.needles.name %><br>
-
-needle size here
+<%= @pattern.needles %><br>
 
 <h5>Yarns:</h5>
-  <%= @pattern.yarns.name %><br>
-weight <br>
-quantity <br></br>
+  <%= @pattern.yarn %><br>
+weight: <%= @pattern.weight %>
+qty: <%= @pattern.quantity %>
+
 
 <p>Directions: </p>
 <%= @pattern.content %><br></br>

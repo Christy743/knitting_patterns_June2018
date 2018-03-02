@@ -1,27 +1,28 @@
+<% if !current_user %>
+  <h1>Welcome to Knit Patterns!</h1>
+    <h3>A place to digitally store and share your patterns on your computer or tablet.</h3><br />
+    <p><%= link_to "Sign up", new_user_path %> here to start!</p>
+<% else %>
+
 <div class="welcome-page">
-<% if current_user %>
+<% current_user %>
     <h1>Welcome to Knit Patterns!</h1><br>
 </div>
-  <div class="signed-in">
-    <h3>You're signed in as <%= current_user.email %></h3>
-  </div>
-  <div class="link-1">
-    <p><%= link_to "To Make a New Pattern", new_pattern_path %></p>
-  </div>
-  <div class="link-2">
-    <p><%= link_to "To See the Pattern List", patterns_path %></p>
-  </div>
-<% else %>
-  <div class="welcome-page">
-    <h1>Welcome to Knit Patterns!</h1>
-  </div>
-<% end %>
 
-<div class="welcome-text">
-  <h3>A place to digitally store and share your patterns on your computer or
-      tablet.</h3><br />
+<div class="signed-in">
+  <h3>You're signed in as <%= current_user.email %></h3>
 </div>
 
-<div class="signup-link">
-  <p><%= link_to "Sign up", new_user_path %> here to start!</p>
+<div class="link-1">
+  <p><%= link_to "To Make a New Pattern", new_pattern_path %></p>
+</div>
+
+<div class="link-2">
+  <p><%= link_to "To See the Pattern List", patterns_path %></p>
+</div>
+
+<div class="welcome-page-1">
+  <h3>A place to digitally store and share your patterns on your computer or tablet.</h3><br />
+</div>
+<% end %>
 </div>

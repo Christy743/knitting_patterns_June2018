@@ -22,7 +22,13 @@
    background: linear-gradient(#E4C9F3, white);
  }
 
- .welcome-page, .welcome-text, .signup-link, .signed-in, .link-1, .link-2 {
+ .welcome-page, .welcome-text, .signup-link, .signed-in, .link-1, .link-2, .welcome-page-1{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+ }
+
+ .welcome-page-not-signed-in, .pattern-list {
    display: flex;
    justify-content: center;
    align-items: center;
@@ -44,7 +50,7 @@
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
   width: 20%;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   @include box_sizing;
 }
 
@@ -79,4 +85,19 @@ input {
 #session_remember_me {
   width: auto;
   margin-left: 0;
+}
+
+.sign-up-form  {
+  padding-top: 20px;
+}
+
+.sign-up-form-1 {
+  display: inline;
+  justify-content: center;
+}
+
+.index-patterns {
+  display: flex;
+  justify-content: center;
+  padding-left: 5%;
 }
