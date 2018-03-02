@@ -7,18 +7,32 @@ class PatternsController < ApplicationController
 
   def show
     @pattern = Pattern.find(params[:id])
+    #@needles = @pattern.needles
+    #@yarn = @pattern.yarn_id
+    #@other_notion = @pattern.other_notion
+    #@user = User.find(params[:id])
     @comment = Comment.new
   end
 
   def new
     @pattern = Pattern.new
-    @pattern = current_user.patterns.build
-    @user = current_user
+    #@pattern.yarns.build
+    #@needles = Needle.new
+    #@yarn = Yarn.new
+    #@pattern.yarn_id
+    #@pattern.needle_id
+    #@pattern.other_notion_id
+    #@pattern.yarns.build
+    #@pattern = current_user.patterns.build
+    #@user = current_user
   end
 
   def create
-    @pattern = current_user.patterns.build(pattern_params)
-    #binding.pry
+      #binding.pry
+
+    @pattern = Pattern.new(pattern_params)
+    @pattern.user = current_user
+
     if @pattern.save
       redirect_to pattern_path(@pattern), notice: "You have successfully made a pattern!"
     else
@@ -43,13 +57,16 @@ class PatternsController < ApplicationController
   def destroy
     @pattern = Pattern.find(params[:id])
     @pattern.destroy
-    redirect_to root_path
+    redirect_to patterns_path
   end
 
   private
 
   def pattern_params
-    params.require(:pattern).permit(:name, :content, :user_id, :username, :id)
+    params.require(:pattern).permit(:id, :name, :content, :materials,
+      yarns_attributes: [:name, :weight, :quantity],
+      needles_attributes: [:name, :us_size]
+      )
   end
 
 end

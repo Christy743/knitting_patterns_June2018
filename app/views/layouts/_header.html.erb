@@ -1,21 +1,19 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
 
         <% if current_user %>
-          <li><%= link_to "Sign Out", signout_path, method: :delete %></li><br>
-          <li><%= link_to "Profile", current_user %></li><br>
-          <li><%= link_to "Home Page", root_path %></li><br>
+          <%= link_to "Sign Out", signout_path, method: :delete %><br />
+          <%= link_to "Profile", current_user %><br />
+          <%= link_to "Home Page", root_path %><br />
         <% else %>
           <br />
-          <li><%= link_to "Sign In", signin_path %></li><br>
-          <li><%= link_to "Sign Up", new_user_path %></li><br>
-          <li><%= link_to "Log in with GitHub", "/auth/github" %></li>
+          <%= link_to "Sign In", signin_path %><br />
+          <%= link_to "Sign Up", new_user_path %><br />
+          <%= link_to "Log in with GitHub", "/auth/github" %>
           <br />
         <% end %>
-        
-      </ul>
+
     </div>
   </div>
 </nav>

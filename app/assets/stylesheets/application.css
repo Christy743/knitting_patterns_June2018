@@ -22,6 +22,25 @@
    background: linear-gradient(#E4C9F3, white);
  }
 
+ .welcome-page, .welcome-text, .signup-link, .signed-in, .link-1, .link-2 {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+ }
+
+.yarnball {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+ #myNavbar {
+   display: inline-block;
+   justify-content: left;
+   font-style: normal;
+   padding-left: 7%;
+ }
+
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
   width: 20%;

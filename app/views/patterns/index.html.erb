@@ -11,7 +11,7 @@
 
 <% if current_user %>
   <%= link_to "To Make a New Pattern", new_pattern_path %>
-    <% if current_user.patterns.count == 0 %>
+  <% end %>
+    <% if current_user.patterns.count < 1 %>
       <p><%= current_user.username %>, you have no projects. Click on the link above, if you would like to make a new knitting pattern.</p>
     <% end %>
-<% end %>

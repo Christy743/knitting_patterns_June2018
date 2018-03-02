@@ -4,21 +4,18 @@
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <div class="alert alert-danger">
-    <h3><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved: </h3>
+        <h3><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved: </h3>
       </div>
-      <ul>
-        <% @user.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
+        <ul>
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
   <% end %>
 
   <%= f.label :email %><br></br>
   <%= f.text_field :email, class: "form-control" %>
-  <br></br>
-  <%= f.label :username %><br></br>
-  <%= f.text_field :username, class: "form-control" %>
   <br></br>
   <%= f.label :password %><br></br>
   <%= f.password_field :password, class: "form-control" %>
@@ -30,7 +27,8 @@
   <%= f.text_area :bio, class: "form-control" %>
   <br></br>
 
-  <%= f.submit "Create My Account", class: "btn btn-primary" %>
+  <%= f.submit class: "btn btn-primary" %>
+
 <% end %>
-</div>
+  </div>
 </div>

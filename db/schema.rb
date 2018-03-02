@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180227221148) do
+ActiveRecord::Schema.define(version: 20180302044135) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "pattern_id"
@@ -23,23 +23,15 @@ ActiveRecord::Schema.define(version: 20180227221148) do
     t.integer "pattern_id"
   end
 
-  create_table "needles", force: :cascade do |t|
-    t.string "us_size"
-    t.string "name"
-    t.integer "pattern_id"
-  end
-
-  create_table "other_notions", force: :cascade do |t|
-    t.string "notions"
-    t.integer "pattern_id"
-  end
-
   create_table "patterns", force: :cascade do |t|
     t.integer "user_id"
     t.string "name"
     t.string "content"
-    t.integer "needle_id"
-    t.integer "yarn_id"
+    t.string "materials"
+    t.string "needles"
+    t.string "yarn"
+    t.string "weight"
+    t.integer "quantity"
   end
 
   create_table "users", force: :cascade do |t|
@@ -54,13 +46,6 @@ ActiveRecord::Schema.define(version: 20180227221148) do
     t.string "oauth_token"
     t.datetime "oauth_expires_at"
     t.string "remember_digest"
-  end
-
-  create_table "yarns", force: :cascade do |t|
-    t.string "name"
-    t.string "weight"
-    t.integer "quantity", default: 1
-    t.integer "pattern_id"
   end
 
 end
