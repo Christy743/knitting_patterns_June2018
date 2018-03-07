@@ -6,7 +6,9 @@ class PatternsController < ApplicationController
 
   def show
     @pattern = Pattern.find(params[:id])
-    #@comment = Comment.new
+    #binding.pry
+    #@comment = @pattern.comments.create
+    #binding.pry
   end
 
   def new

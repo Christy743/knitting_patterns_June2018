@@ -2,20 +2,29 @@ class CommentsController < ApplicationController
   before_action :get_parent
 
   def new
-    @comment = @parent.comments.build
+    #binding.pry
+    @comment = Comment.new
   end
 
   def create
-    @comment = @parent.comments.build(params[:comment])
+    #binding.pry
+    @comment = @parent.comments.build(comment_params)
+    #binding.pry
+    #@comment.user_id = current_user.id
 
     if @comment.save
+
       redirect_to pattern_path(@comment.pattern), notice: "Thank you for your comment!"
     else
       render :new
     end
   end
 
-  protected
+  private
+
+  def comment_params
+    params.require(:comment).permit(:id, :content, :title, :commentable_id, :commentable_type)
+  end
 
   def get_parent
     @parent = Pattern.find_by_id(params[:pattern_id]) if params[:pattern_id]

@@ -13,11 +13,11 @@ Rails.application.routes.draw do
   resources :users
   resources :patterns
 
-  resources :comments do
+  resources :patterns do
     resources :comments
   end
 
-  resources :patterns do
+  resources :comments do
     resources :comments
   end
 
