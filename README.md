@@ -52,45 +52,15 @@ Open a web browser and navigate to:
 
   Bug reports and pull requests are welcome on GitHub at # Models
 
-  This app uses 5 ActiveRecord Models: ```User, Coin, Wallet, Transaction, and CryptocompareApi```. The join table is ```Transaction```.
+  This app uses 5 ActiveRecord Models: ``````. The join table is ``````.
 
   User:
     ```
-    has_many :transactions
-    has_many :coins, through: :transactions
-    has_many :wallets
+    has_many
+    has_many
+    has_many
     ```
 
-  Coin:
-    ```
-    has_many :transactions
-    has_many :users, through: :transactions
-    has_many :wallets
-
-    validates :name, :symbol
-    ```
-
-  Wallet:
-    ```
-    belongs_to :user
-    belongs_to :coin
-
-    validates :name, :coin_amount, :user_deposit (presence, and greater than 0)
-    ```
-
-  Transaction:
-    ```
-    belongs_to :user
-    belongs_to :coin
-
-    validates :amount, :quantity, :price_per_coin, :fee (presence, and greater than 0)
-    ```
-
-  Cryptocompare API:
-
-    ```
-    Uses custom methods, to parse real-time price data, symbols, coin names, and coin IDs.
-    ```
 
   ## Contributing
 
