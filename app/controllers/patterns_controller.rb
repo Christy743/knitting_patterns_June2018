@@ -1,4 +1,5 @@
 class PatternsController < ApplicationController
+  #skip_before_action :verify_authenticity_token, :only => :create, :show
 
   def index
     @patterns = Pattern.all

@@ -3,9 +3,13 @@ class User < ActiveRecord::Base
   has_many :patterns
   has_many :favorite_patterns, through: :patterns
 
+  #before_save :store_settings
+
 
 
   attr_accessor :remember_token
+
+  #attr_accessor :favorite_pattern
 
   has_secure_password
 
@@ -19,6 +23,16 @@ class User < ActiveRecord::Base
 
   #accepts_nested_attributes_for :patterns, reject_if: :all_blank
 
+  #def store_settings
+  #  self.settings = {favorite_pattern: favorite_pattern}
+  #end
+
+  def favorite_patterns_attributes=(favorite_pattern_attributes)
+    favorite_pattern_attributes.values.each do |favorite_pattern_attribute|
+      favorite_pattern = FavoritePattern.find_or_create_by(favorite_pattern_attribute)
+      self.favorite_patterns << favorite_pattern
+    end
+  end
 
   def self.find_or_create_by_omniauth(auth_hash)
     self.where(email: auth_hash["info"]["email"]).first_or_create do |user|

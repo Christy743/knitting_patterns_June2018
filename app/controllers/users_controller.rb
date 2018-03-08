@@ -13,6 +13,8 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @user.favorite_pattern.build
+    binding.pry
   end
 
   def create
@@ -46,7 +48,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name, :username, :id, :email, :password, :password_confirmation, :bio)
+    params.require(:user).permit(:name, :username, :id, :email, :password, :password_confirmation, :bio, favorite_patterns_attributes: [:pattern_id, :user_id, :id])
   end
 
 end

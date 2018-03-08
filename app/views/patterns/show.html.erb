@@ -19,8 +19,20 @@ qty: <%= @pattern.quantity %>
 <p><%= link_to "Add a Comment", new_pattern_comment_path(@pattern) %></p>
 
 <ul class="comment_list">
+
   <%= render partial: "comments/comment", collection: @pattern.comments %>
 </ul>
+
+<h3>Check here if you want to 'favorite' this pattern: </h3>
+
+<%= form_tag @pattern, method: :post do %>
+  <%= label :pattern, "Favorite Pattern" %>
+  <%= check_box(@pattern, :pattern_id, {checked: false}) %>
+<% end %>
+
+<br></br>
+
+This pattern has been favorited # times. <br>
 
 <% if current_user == @pattern.user %>
 

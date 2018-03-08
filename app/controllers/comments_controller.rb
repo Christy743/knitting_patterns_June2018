@@ -4,6 +4,7 @@ class CommentsController < ApplicationController
   def new
     #binding.pry
     @comment = Comment.new
+    #@user = User.new
   end
 
   def create
