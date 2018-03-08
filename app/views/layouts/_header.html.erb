@@ -1,7 +1,7 @@
-<nav class="navbar navbar-inverse">
+<nav class="navbar-brand navbar-nav">
   <div class="container-fluid">
-    <div class="collapse navbar-collapse" id="myNavbar">
-
+    <div class="collapse navbar-collapse" id="mainNav">
+      <div nav-link>
         <% if current_user %>
           <%= link_to "Sign Out", signout_path, method: :delete %><br />
           <%= link_to "Profile", current_user %><br />
@@ -13,7 +13,7 @@
           <%= link_to "Log in with GitHub", "/auth/github" %>
           <br />
         <% end %>
-
+      </div>
     </div>
   </div>
 </nav>

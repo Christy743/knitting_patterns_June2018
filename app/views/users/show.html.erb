@@ -1,26 +1,24 @@
-<% if current_user = @user.id %><br />
+<% if current_user = @user.id %>
   <h2><%= @user.username %>'s Profile</h2>
-  <p>Email address: <%= @user.email %></p>
-  <p>Bio: <%= @user.bio %></p><br />
+    <p>Email address: <%= @user.email %></p>
+    <p>Bio: <%= @user.bio %></p><br />
 
-<h3>Your patterns: </h3>
-  <% @user.patterns.each_with_index do |pattern, i| %>
-    <%= i + 1 %>. <%= link_to pattern.name.capitalize, pattern_path(pattern.id) %><br></br>
-  <% end %>
+  <h3>Your patterns: </h3>
+    <% @user.patterns.each_with_index do |pattern, i| %>
+      <p><%= i + 1 %>. <%= link_to pattern.name.capitalize, pattern_path(pattern.id) %></p><br />
+    <% end %>
 
   here will be a list of favorited patterns
   favorite_pattern_yes
-<br></br>
+<br />
 list of
 user.pattern.favorite_patterns
 
+<br />
+and here is the number of patterns favorited for current_user by other
+users
 
-    <br></br>
-  and here is the number of patterns favorited for current_user by other
-  users
-
-  <br></br>
-
+<br />
   <%= link_to "Edit your profile", edit_user_path %>
 
 <% end %>

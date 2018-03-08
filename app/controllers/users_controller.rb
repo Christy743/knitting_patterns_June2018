@@ -13,8 +13,8 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-    @user.favorite_pattern.build
-    binding.pry
+    #@user.favorite_pattern.build
+    #binding.pry
   end
 
   def create

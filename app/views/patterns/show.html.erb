@@ -1,50 +1,42 @@
+<br />
 <h3><%= @pattern.name %></h3>
 
-<h5>Materials and notions:</h5>
-<%= @pattern.materials %>
+<h4>Materials and notions:</h4>
+  <%= @pattern.materials %>
 
-<h5>Knitting Needles:</h5>
-<%= @pattern.needles %><br>
+<h4>Knitting Needles:</h4>
+  <%= @pattern.needles %>
 
-<h5>Yarns:</h5>
-  <%= @pattern.yarn %><br>
-weight: <%= @pattern.weight %>
-qty: <%= @pattern.quantity %>
+<h4>Yarns:</h4>
+  <p><%= @pattern.yarn %></p>
+  <p>Yarn weight: <%= @pattern.weight %></p>
+  <p>Yarn quantity: <%= @pattern.quantity %></p>
 
+<h4>Directions: </h4>
+  <p><%= @pattern.content %></p>
 
-<p>Directions: </p>
-<%= @pattern.content %><br></br>
+<h3>Comments</h3>
+  <p><%= link_to "Add a Comment", new_pattern_comment_path(@pattern) %></p>
+    <ul class="comment_list">
+      <p><%= render partial: "comments/comment", collection: @pattern.comments %></p>
+    </ul>
 
-<h2>Comments</h2>
-<p><%= link_to "Add a Comment", new_pattern_comment_path(@pattern) %></p>
+<h4>Check here if you want to 'favorite' this pattern: </h4>
 
-<ul class="comment_list">
-
-  <%= render partial: "comments/comment", collection: @pattern.comments %>
-</ul>
-
-<h3>Check here if you want to 'favorite' this pattern: </h3>
-
-<%= form_tag @pattern, method: :post do %>
-  <%= label :pattern, "Favorite Pattern" %>
-  <%= check_box(@pattern, :pattern_id, {checked: false}) %>
-<% end %>
-
-<br></br>
+  <%= form_tag @pattern, method: :post do %>
+    <%= label :pattern, "Favorite Pattern" %>
+    <%= check_box(@pattern, :pattern_id, {checked: false}) %>
+  <% end %>
+<br />
 
 This pattern has been favorited # times. <br>
 
 <% if current_user == @pattern.user %>
-
-<br></br>
-<%= link_to "Edit this Pattern", edit_pattern_path %>
-
-<br></br>
-
-<%= link_to "Destroy", pattern_path, method: :delete, alert: { confirm: "Are you sure?" } %>
-
+  <br />
+  <%= link_to "Edit this Pattern", edit_pattern_path %>
+  <br />
+  <%= link_to "Destroy", pattern_path, method: :delete, alert: { confirm: "Are you sure?" } %>
 <% end %>
 
-<br></br>
-
-<%= link_to "Back to Pattern List", patterns_path %>
+  <br />
+  <%= link_to "Back to Pattern List", patterns_path %>

@@ -1,19 +1,14 @@
-<div class="pattern-list">
-  <h2>Pattern List</h2><br />
-</div>
-
-<div id="scroll-list" style="overflow:scroll; height:300px;">
-  <div class="index-patterns">
-    <ul>
-      <% @patterns.each_with_index do |pattern, i| %>
-        <%= i + 1 %>. <%= link_to pattern.name.capitalize, pattern_path(pattern.id) %><br></br>
-      <% end %>
-    </ul>
-  </div>
+<h2>Pattern List</h2><br />
+<div style="width:500px;height:550px;line-height:2em;overflow:scroll;padding:5px;">
+  <ul>
+    <% @patterns.each_with_index do |pattern, i| %>
+      <%= i + 1 %>. <%= link_to pattern.name.capitalize, pattern_path(pattern.id) %><br></br>
+    <% end %>
+  </ul>
 </div>
 
 <% if current_user %>
-  <%= link_to "To Make a New Pattern", new_pattern_path %>
+  <h3><%= link_to "To Make a New Pattern", new_pattern_path %></h3>
 <% end %>
 
 <% if current_user.patterns.count == 0 %>

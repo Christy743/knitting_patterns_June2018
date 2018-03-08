@@ -1,26 +1,24 @@
 <%= form_for [@parent, @comment] do |f| %>
-
   <% if @comment.errors.any? %>
     <div id="error_explanation">
-      <div class="alert alert-danger">
-        <h3><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved: </h3>
-      </div>
-        <ul>
-          <% @comment.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
+    <div class="alert alert-danger">
+      <h3><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved: </h3>
+    </div>
+      <ul>
+        <% @comment.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
   <% end %>
 
-  <%= f.label :title %><br></br>
-  <%= f.text_field :title, class: "form-control" %><br></br>
-
-  <%= f.label :content %><br></br>
-  <%= f.text_area :content %><br></br>
-
+  <%= f.label :title %><br />
+  <%= f.text_field :title, class: "form-control" %>
+  <br />
+  <%= f.label :content %><br />
+  <%= f.text_area :content %>
+  <br />
   <%= hidden_field_tag :username, @user %>
 
   <%= f.submit class: "btn btn-primary" %>
-
-  <% end %>
+<% end %>

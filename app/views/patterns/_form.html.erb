@@ -1,48 +1,40 @@
-<div class="row">
-<div class="col-md-6 col-md-offset-3">
-
 <%= form_for @pattern do |f| %>
-
   <% if @pattern.errors.any? %>
     <div id="error_explanation">
-      <div class="alert alert-danger">
-        <h3><%= pluralize(@pattern.errors.count, "error") %> prohibited this pattern from being saved: </h3>
-      </div>
-        <ul>
-          <% @pattern.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
+    <div class="alert alert-danger">
+      <h3><%= pluralize(@pattern.errors.count, "error") %> prohibited this pattern from being saved: </h3>
+    </div>
+      <ul>
+        <% @pattern.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
   <% end %>
 
-  <div id="scroll-list" style="overflow:scroll; height:500px;">
-    <%= f.label :name, "Type in Your Pattern Name" %><br></br>
+    <%= f.label :name, "Type in Your Pattern Name" %><br />
     <%= f.text_field :name, class: "form-control" %>
-      <br></br>
-    <%= f.label :needles %><br></br>
+    <br />
+    <%= f.label :needles %><br />
     <%= f.text_field :needles, class: "form-control" %>
-      <br></br>
-    <%= f.label :yarn %><br></br>
+    <br />
+    <%= f.label :yarn %><br />
     <%= f.text_field :yarn, class: "form-control" %>
-      <br></br>
-    <%= f.label :weight %><br></br>
+    <br />
+    <%= f.label :weight %><br />
     <%= f.text_field :weight, class: "form-control" %>
-      <br></br>
-    <%= f.label :quantity %><br></br>
+    <br />
+    <%= f.label :quantity %><br />
     <%= f.number_field :quantity, class: "form-control"%>
-      <br></br>
+    <br />
     <%= f.label :materials, "Any other materials to complete the project:" %><br></br>
-    <%= f.text_area :materials, class: "form-control" %><br></br>
-      <br></br>
-    <%= f.label :content, "Pattern Directions" %><br></br>
+    <%= f.text_area :materials, class: "form-control" %><br />
+    <br />
+    <%= f.label :content, "Pattern Directions" %><br />
     <%= f.text_area :content, class: "form-control" %>
-      <br></br>
+    <br />
 
     <%= f.submit class: "btn btn-primary" %>
-
 <% end %>
-
-    </div>
   </div>
 </div>
