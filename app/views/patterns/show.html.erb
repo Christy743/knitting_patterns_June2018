@@ -16,20 +16,29 @@
   <p><%= @pattern.content %></p>
 
 <h3>Comments</h3>
-  <p><%= link_to "Add a Comment", new_pattern_comment_path(@pattern) %></p>
-    <ul class="comment_list">
-      <p><%= render partial: "comments/comment", collection: @pattern.comments %></p>
-    </ul>
+
+<%= form_for [@pattern, Comment.new] do |f| %>
+<%= f.text_field :title, placeholder: "Add a comment title" %><br />
+<%= f.text_area :content, placeholder: "Add a comment" %><br />
+<%= f.submit "Add Comment" %>
+<% end %>
+
+<ul><%= render partial: "comments/comment", collection: @pattern.comments %></ul>
+
+
 
 <h4>Check here if you want to 'favorite' this pattern: </h4>
 
-  <%= form_tag @pattern, method: :post do %>
-    <%= label :pattern, "Favorite Pattern" %>
-    <%= check_box(@pattern, :pattern_id, {checked: false}) %>
-  <% end %>
+<% if current_user %>
+<%= form_for @pattern do |f| %>
+  <%= label :favorite_pattern, "Favorite Pattern" %>
+  <%= link_to "favorite", pattern_favorite_patterns_path(@pattern, type: "favorite"), method: :put %>
+<% end %>
+<% end %>
+
 <br />
 
-This pattern has been favorited # times. <br>
+This pattern has been favorited <%= @pattern.favorites_count %> times. <br>
 
 <% if current_user == @pattern.user %>
   <br />

@@ -1,7 +1,14 @@
 class User < ActiveRecord::Base
 
-  has_many :patterns
-  has_many :favorite_patterns, through: :patterns
+  has_many :patterns #owns
+  has_many :favorite_patterns
+  has_many :patterns, through: :favorite_patterns # , through: :patterns #don't necessarily own
+  has_many :comments
+  #give class patterns
+  #add a favorite to the original -
+
+  #has many favorites only - give the foreign key
+  #maybe source it to patterns - use pattern's id
 
   #before_save :store_settings
 
@@ -27,12 +34,22 @@ class User < ActiveRecord::Base
   #  self.settings = {favorite_pattern: favorite_pattern}
   #end
 
-  def favorite_patterns_attributes=(favorite_pattern_attributes)
-    favorite_pattern_attributes.values.each do |favorite_pattern_attribute|
-      favorite_pattern = FavoritePattern.find_or_create_by(favorite_pattern_attribute)
-      self.favorite_patterns << favorite_pattern
-    end
-  end
+  #def favorite_patterns_attributes=(favorite_pattern_attributes)
+  #  favorite_pattern_attributes.values.each do |favorite_pattern_attribute|
+  #    favorite_pattern = FavoritePattern.find_or_create_by(favorite_pattern_attribute)
+  #    self.favorite_patterns << favorite_pattern
+  #  end
+  #end
+
+  #def favorite?(user)
+  #  true if self.patterns & user.patterns
+  #end
+
+  #def current_user_favorite?
+  #  if current_user.suggest_books_from?(user)
+  #    user.books - current_user.books
+  #  end
+  #end
 
   def self.find_or_create_by_omniauth(auth_hash)
     self.where(email: auth_hash["info"]["email"]).first_or_create do |user|

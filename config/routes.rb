@@ -17,16 +17,17 @@ Rails.application.routes.draw do
     resources :comments
   end
 
+  #resources :users do
+  #  resources :comments
+  #end
+
   resources :comments do
     resources :comments
   end
 
-  resources :users do
-    resources :favorite_patterns
+  resources :patterns do
+    put :favorite_patterns, to: :user
   end
-
-  resources :favorite_patterns, only: [:index, :create, :destroy]
-
 
   #resources :patterns do
   #  resources :favorite_patterns
