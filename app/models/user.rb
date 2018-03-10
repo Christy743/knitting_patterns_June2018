@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
 
   has_many :patterns #owns
   has_many :favorite_patterns
-  has_many :patterns, through: :favorite_patterns # , through: :patterns #don't necessarily own
+  has_many :favorites, through: :favorite_patterns, source: :pattern # , through: :patterns #don't necessarily own
   has_many :comments
   #give class patterns
   #add a favorite to the original -
@@ -29,6 +29,10 @@ class User < ActiveRecord::Base
   #validates :bio, length: { maximum: 250 }
 
   #accepts_nested_attributes_for :patterns, reject_if: :all_blank
+
+  def favorited(pattern)
+    @self.favorites << pattern
+  end
 
   #def store_settings
   #  self.settings = {favorite_pattern: favorite_pattern}
