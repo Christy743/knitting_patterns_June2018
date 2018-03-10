@@ -47,12 +47,27 @@ class PatternsController < ApplicationController
     redirect_to patterns_path
   end
 
-  def favorite_patterns
-    binding.pry
+  #def favorite_patterns
+  #  binding.pry
+  #  type = params[:type]
+  #  if type == "favorite"
+  #    current_user.favorite_pattern_ids << @pattern
+  #    redirect_to pattern_favorite_patterns_path #, notice: "You favorited #{@pattern.name}."
+  #  end
+  #end
+
+  def favorite
+    @pattern = Pattern.find(params[:id])
+    @favorited = FavoritePattern.find_by(user: current_user, pattern: @pattern).present?
     type = params[:type]
     if type == "favorite"
-      current_user.favorite_pattern_ids << @pattern
-      redirect_to pattern_favorite_patterns_path #, notice: "You favorited #{@pattern.name}."
+      current_user.favorites << @pattern
+      redirect_to patterns_path, notice: "Added #{@pattern.name} to favorites"
+    elsif type == "unfavorite"
+      current_user.favorites.delete(@pattern)
+      redirect_to patterns_path, notice: "Removed #{@pattern.name} from favorites"
+    else
+      redirect_to patterns_path, notice: "Nothing happened"
     end
   end
 

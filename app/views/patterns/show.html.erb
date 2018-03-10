@@ -18,7 +18,6 @@
 <h3>Comments</h3>
 
 <%= form_for [@pattern, Comment.new] do |f| %>
-<%= f.text_field :title, placeholder: "Add a comment title" %><br />
 <%= f.text_area :content, placeholder: "Add a comment" %><br />
 <%= f.submit "Add Comment" %>
 <% end %>
@@ -27,14 +26,15 @@
 
 
 
-<h4>Check here if you want to 'favorite' this pattern: </h4>
+<h4>Click the button below if you want to 'favorite' this pattern: </h4>
 
-<% if current_user %>
-<%= form_for @pattern do |f| %>
-  <%= label :favorite_pattern, "Favorite Pattern" %>
-  <%= link_to "favorite", pattern_favorite_patterns_path(@pattern, type: "favorite"), method: :put %>
+<%= button_to "Add to Favorites", pattern_favorite_path(@pattern) %>
+
+<% if @favorited %>
+  <%= link_to "Favorite", pattern_favorite_path(@pattern, type: "favorite"), method: :put %>
+  <%= link_to "Unfavorite", pattern_favorite_path(@pattern, type: "unfavorite"), method: :put %>
 <% end %>
-<% end %>
+
 
 <br />
 

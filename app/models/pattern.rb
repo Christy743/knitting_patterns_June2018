@@ -3,7 +3,7 @@ class Pattern < ActiveRecord::Base
   has_many :comments, as: :commentable
   #has_many :users, through: :comments
   has_many :favorite_patterns #through users?
-  has_many :favorites, through: :favorite_patterns, source: :user
+  has_many :favorited_by, through: :favorite_patterns, source: :user
   #owner id matches it's user id - differentiate the users
 
   #validates_presence_of :name, :content

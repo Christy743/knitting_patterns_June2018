@@ -26,12 +26,16 @@ Rails.application.routes.draw do
   end
 
   resources :patterns do
-    put :favorite_patterns, to: :user
+    put :user do
+      put "favorite" => "patterns#favorite"
+      put "unfavorite" => "patterns#unfavorite"
+    end
+    put :favorite, to: :user
   end
 
-  #resources :patterns do
-  #  resources :favorite_patterns
-  #end
+  resources :patterns do
+    resources :favorite_patterns
+  end
 
   #resources :users do
   #  resources :needles, :yarns, :other_notions
