@@ -30,8 +30,10 @@ Rails.application.routes.draw do
       put "favorite" => "patterns#favorite"
       put "unfavorite" => "patterns#unfavorite"
     end
-    put :favorite, to: :user
+    put "favorite", to: :user
   end
+
+  post 'patterns/:id/favorite', to: 'patterns#favorite'
 
   resources :patterns do
     resources :favorite_patterns

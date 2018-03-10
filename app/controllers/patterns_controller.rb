@@ -19,6 +19,7 @@ class PatternsController < ApplicationController
   def create
     @pattern = Pattern.new(pattern_params)
     @pattern.user = current_user
+    @favorite = FavoritePattern.current_user.favorites.create(params[:user_id, :pattern_id])
     #binding.pry
     if @pattern.save
       redirect_to pattern_path(@pattern), notice: "You have successfully made a pattern!"
@@ -58,7 +59,8 @@ class PatternsController < ApplicationController
 
   def favorite
     @pattern = Pattern.find(params[:id])
-    @favorited = FavoritePattern.find_by(user: current_user, pattern: @pattern).present?
+    @favorite = FavoritePattern.find_by(user: current_user, pattern: @pattern).present?
+    #binding.pry
     type = params[:type]
     if type == "favorite"
       current_user.favorites << @pattern
@@ -75,7 +77,7 @@ class PatternsController < ApplicationController
 
   def pattern_params
     params.require(:pattern).permit(:id, :name, :content, :materials,
-      :needles, :yarn, :weight, :quantity, favorite_patterns_attributes: [:favorite_pattern_id, :pattern_id, :user_id])
+      :needles, :yarn, :weight, :quantity)
   end
 
 end

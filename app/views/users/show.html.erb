@@ -9,6 +9,9 @@
     <% end %>
 
   here will be a list of favorited patterns
+  <% @user.favorites.each do |pattern| %>
+  <%= pattern.name %>
+<% end %>
   favorite_pattern_yes
 <br />
 list of

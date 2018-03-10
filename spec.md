@@ -2,9 +2,9 @@
 
 Specs:
 - [x] Using Ruby on Rails for the project - used the terminal to make a skeletal form of rails by typing in "rails new knitting_patterns_rails".
-- [] Include at least one has_many relationship (x has_many y e.g. User has_many Recipes) - made a model with the user and it's association with patterns in that user has many patterns
+- [x] Include at least one has_many relationship (x has_many y e.g. User has_many Recipes) - made a model with the user and it's association with patterns in that user has many patterns
 - [x] Include at least one belongs_to relationship (x belongs_to y e.g. Post belongs_to User) - patterns belongs to user and made the pattern model to reflect that association
-- [ ] Include at least one has_many through relationship (x has_many y through z e.g. Recipe has_many Items through Ingredients)
+- [x] Include at least one has_many through relationship (x has_many y through z e.g. Recipe has_many Items through Ingredients) - have a one has many through relationship with favorite patterns and user has many favorite patterns and has many favorites through favorite patterns and the source is pattern. The pattern has many favorite patterns and has_many favorited by, through favorite_patterns and the source will be the user.
 - [ ] The "through" part of the has_many through includes at least one user submittable attribute (attribute_name e.g. ingredients.quantity)
 - [x] Include reasonable validations for simple model objects (list of model objects with validations e.g. User, Recipe, Ingredient, Item) Validated email, name, etc in my user model.
 - [ ] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
