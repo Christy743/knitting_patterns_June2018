@@ -16,7 +16,10 @@
   <%= f.text_area :content %>
   <br />
 
-  <%= hidden_field_tag :username, @user %>
+  <%= f.fields_for :user do |user_field| %>
+    <%= user_field.label :username %>
+    <%= user_field.text_field :username %>
+  <% end %> 
 
   <%= f.submit class: "btn btn-primary" %>
 <% end %>
