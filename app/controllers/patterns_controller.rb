@@ -60,7 +60,7 @@ class PatternsController < ApplicationController
     @pattern = Pattern.find(params[:id])
     @favorite = FavoritePattern.find_by(user: current_user, pattern: @pattern).present?
     #binding.pry
-    type = params[:type]
+    type = params[:action]
     if type == "favorite"
       current_user.favorites << @pattern
       redirect_to patterns_path, notice: "Added #{@pattern.name} to favorites"
