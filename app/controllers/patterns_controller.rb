@@ -57,14 +57,16 @@ class PatternsController < ApplicationController
   #end
 
   def favorite
-    @pattern = Pattern.find(params[:id])
-    @favorite = FavoritePattern.find_by(user: current_user, pattern: @pattern).present?
     #binding.pry
+    @pattern = Pattern.find(params[:pattern_id])
+    @favorite = FavoritePattern.find_by(user: current_user, pattern: @pattern).present?
+    binding.pry
     type = params[:action]
     if type == "favorite"
       current_user.favorites << @pattern
       redirect_to patterns_path, notice: "Added #{@pattern.name} to favorites"
     elsif type == "unfavorite"
+      binding.pry
       current_user.favorites.delete(@pattern)
       redirect_to patterns_path, notice: "Removed #{@pattern.name} from favorites"
     else

@@ -17,6 +17,10 @@
 list of
 user.pattern.favorite_patterns
 
+<% @user.favorites.each do |pattern| %>
+  <%= pattern.name %>
+<% end %>
+
 <br />
 and here is the number of patterns favorited for current_user by other
 users
