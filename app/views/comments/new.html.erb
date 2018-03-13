@@ -1,4 +1,4 @@
-<%= form_for [@parent, @comment] do |f| %>
+<%= form_for [@commentable, @comment] do |f| %>
   <% if @comment.errors.any? %>
     <div id="error_explanation">
     <div class="alert alert-danger">
@@ -19,7 +19,7 @@
   <%= f.fields_for :user do |user_field| %>
     <%= user_field.label :username %>
     <%= user_field.text_field :username %>
-  <% end %> 
+  <% end %>
 
   <%= f.submit class: "btn btn-primary" %>
 <% end %>

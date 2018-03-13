@@ -30,13 +30,13 @@ class User < ActiveRecord::Base
 
   #accepts_nested_attributes_for :patterns, reject_if: :all_blank
 
-  def self.current
-    Thread.current[:user]
-  end
+def self.current
+  Thread.current[:user]
+end
 
   def self.current=(user)
     Thread.current[:user] = user
-  end 
+  end
   #def favorited(pattern)
   #  #binding.pry
   #  @self.favorites << pattern

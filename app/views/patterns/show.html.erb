@@ -15,14 +15,16 @@
 <h4>Directions: </h4>
   <p><%= @pattern.content %></p>
 
-<h3>Comments</h3>
+  <h3>Comments</h3>
 
-<%= form_for [@pattern, Comment.new] do |f| %>
-<%= f.text_area :content, placeholder: "Add a comment" %><br />
-<%= f.submit "Add Comment" %>
-<% end %>
+  <%= form_for [@pattern, Comment.new] do |f| %>
+  <%= f.text_area :content, placeholder: "Add a comment" %><br />
+  <%= f.submit "Add Comment" %>
+  <% end %>
 
-<ul><%= render partial: "comments/comment", collection: @pattern.comments %></ul>
+  <ul><%= render partial: "comments/comment", collection: @pattern.comments %></ul>
+
+
 
 
 
