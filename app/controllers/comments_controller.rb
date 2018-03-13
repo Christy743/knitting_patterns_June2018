@@ -18,19 +18,19 @@ class CommentsController < ApplicationController
     #binding.pry
     #@comment.user_id = current_user.id
     #comments = Comment.all
-    @comment = @commentable.comments.new(comment_params)
-
+    @comment = @commentable.comments.build(comment_params)
+    binding.pry
     if @comment.save
       redirect_to patterns_path, notice: "Thank you for your comment!"
     else
-      redirect_to patterns_path, notice: "Your comment wasn't posted!"
+      render :new
     end
   end
 
   private
 
   def comment_params
-    params.require(:comment).permit(:content, :title, user_attributes: [:username])
+    params.require(:comment).permit(:id, :content, :commentable_id, :commentable_type, user_attributes: [:username, :user_id])
   end
 
   def find_commentable

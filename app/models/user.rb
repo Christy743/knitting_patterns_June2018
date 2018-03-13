@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   has_many :patterns #owns
   has_many :favorite_patterns
   has_many :favorites, through: :favorite_patterns, source: :pattern # , through: :patterns #don't necessarily own
-  has_many :comments, as: :commentable
+  #has_many :comments #, as: :commentable
   #give class patterns
   #add a favorite to the original -
 
