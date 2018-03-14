@@ -39,13 +39,17 @@ Rails.application.routes.draw do
   #delete :favorite_pattern_id/:favorite/:userid
 #end
 
-  resources :favorite_patterns do
-    binding.pry
-    put :member do
-      put "favorite" => "patterns#create"
-      destroy "unfavorite" => "patterns#destroy"
-    end
-    put "favorite", on: :member
+  #resources :favorite_patterns do
+  #  #binding.pry
+  #  put :member do
+  #    put "favorite" => "patterns#create"
+  #    destroy "unfavorite" => "patterns#destroy"
+  #  end
+  #  put "favorite", on: :member
+  #end
+
+  resources :patterns do
+    match :favorite, on: :member, via: [:put, :delete]
   end
 
   post 'patterns/:id/favorite', to: 'patterns#favorite'

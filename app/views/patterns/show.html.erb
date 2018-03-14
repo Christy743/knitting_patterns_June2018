@@ -27,11 +27,11 @@
 <br />
 
 <h4>Click the button below if you want to 'favorite' this pattern or remove from your favorite patterns: </h4>
-<% if current_user && @favorited %>
+<% if current_user %>
 
-<%= button_to "Delete from Favorites", favorite_pattern_path(@pattern, type: "unfavorite"), method: :put %>
+<%= button_to "Delete from Favorites", favorite_pattern_path(@pattern), method: :put %>
 <% else %>
-<%= button_to "Add to Favorites", favorite_pattern_path(@pattern, type: "favorite"), method: :put %>
+<%= button_to "Add to Favorites", favorite_pattern_path(@pattern), method: :delete %>
 <% end %>
 
 

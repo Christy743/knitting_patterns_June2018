@@ -65,12 +65,15 @@ class PatternsController < ApplicationController
     #binding.pry
     type = params[:action]
     if type == "favorite"
+    #if request.put?
       current_user.favorites << @pattern
-      binding.pry
+      #binding.pry
       redirect_to patterns_path, notice: "Added #{@pattern.name} to favorites"
-      binding.pry
+      #binding.pry
     elsif type == "unfavorite"
-      binding.pry
+    #elsif request.delete?
+
+      #binding.pry
       current_user.favorites.delete(@pattern)
       redirect_to patterns_path, notice: "Removed #{@pattern.name} from favorites"
     else

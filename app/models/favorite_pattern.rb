@@ -2,6 +2,8 @@ class FavoritePattern < ActiveRecord::Base
   belongs_to :user
   belongs_to :pattern
 
+  #validates :user_id, uniqueness: { scope: :pattern_id }
+
   #scope :favorite,   -> { where(favorite: true) }
   #scope :unfavorite, -> { where(unfavorite: false) }
 

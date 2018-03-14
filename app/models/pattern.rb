@@ -2,7 +2,7 @@ class Pattern < ActiveRecord::Base
   belongs_to :user
   has_many :comments, as: :commentable
   #has_many :users, through: :comments
-  has_many :favorite_patterns  #, allow_destroy: true #through users?
+  has_many :favorite_patterns, dependent: :destroy  #, allow_destroy: true #through users?
   has_many :favorited_by, through: :favorite_patterns, source: :user
   #owner id matches it's user id - differentiate the users
 
