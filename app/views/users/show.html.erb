@@ -8,22 +8,16 @@
       <p><%= i + 1 %>. <%= link_to pattern.name.capitalize, pattern_path(pattern.id) %></p><br />
     <% end %>
 
-  here will be a list of favorited patterns
-  <% @user.favorites.each do |pattern| %>
-  <%= pattern.name %>
+<h2>Favorite Patterns</h2>
+<% if current_user.favorite_patterns.empty? %>
+<p>No Favorited Patterns</p>
+<% else %>
+<ul>
+  <% current_user.favorite_patterns.each do |pattern| %>
+  <li><%= link_to ("#{pattern.name}"), pattern_path(@pattern) %></li>
+  <% end %>
+</ul>
 <% end %>
-  favorite_pattern_yes
-<br />
-list of
-user.pattern.favorite_patterns
-
-<% @user.favorites.each do |pattern| %>
-  <%= pattern.name %>
-<% end %>
-
-<br />
-and here is the number of patterns favorited for current_user by other
-users
 
 <br />
   <%= link_to "Edit your profile", edit_user_path %>

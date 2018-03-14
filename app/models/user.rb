@@ -7,6 +7,15 @@ class User < ActiveRecord::Base
   #has_many :comments #, as: :commentable
   #give class patterns
   #add a favorite to the original -
+  #has_many :favorite_favorite_patterns, -> { favorite }, class_name: "FavoritePattern"
+  #has_many :unfavorite_favorite_patterns, -> { unfavorite }, class_name: "FavoritePattern"
+
+  #has_many :unfavorite_patterns, through: :unfavorite_favorite_patterns,
+  #                               class_name: "Pattern",
+  #                               source: :pattern
+  #has_many :favorite_patterns,   through: :favorite_favorite_patterns,
+  #                               class_name: "Pattern",
+  #                               source: :pattern
 
   #has many favorites only - give the foreign key
   #maybe source it to patterns - use pattern's id

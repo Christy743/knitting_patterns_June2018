@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   resources :users
   resources :patterns
+  #resources :favorite_patterns
 
   resources :patterns do
     resources :comments
@@ -30,11 +31,21 @@ Rails.application.routes.draw do
   end
 
   resources :patterns do
-    put :user do
-      put "favorite" => "patterns#favorite"
-      put "unfavorite" => "patterns#unfavorite"
+    put :favorite, on: :member
+  end
+
+  #resources :patterns do
+  #put :favorite_pattern_id/:favorite/:userid
+  #delete :favorite_pattern_id/:favorite/:userid
+#end
+
+  resources :favorite_patterns do
+    binding.pry
+    put :member do
+      put "favorite" => "patterns#create"
+      destroy "unfavorite" => "patterns#destroy"
     end
-    put "favorite", to: :user
+    put "favorite", on: :member
   end
 
   post 'patterns/:id/favorite', to: 'patterns#favorite'
