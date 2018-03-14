@@ -22,16 +22,13 @@
   <%= f.submit "Add Comment" %>
   <% end %>
 
-
 <ul><%= render partial: "comments/comment", collection: @pattern.comments %></ul>
 
 
-
-
-
+<% if @favorited %>
 <h4>Click the button below if you want to 'favorite' this pattern: </h4>
-
 <%= button_to "Add to Favorites", pattern_favorite_path(@pattern, type: "favorite"), method: :put %>
+<% end %>
 <%= button_to "Delete from Favorites", pattern_favorite_path(@pattern, type: "unfavorite"), method: :put %>
 
 

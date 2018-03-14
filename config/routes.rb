@@ -21,6 +21,10 @@ Rails.application.routes.draw do
   #  resources :comments
   #end
 
+  resources :user do
+    resources :comments, only: [:new, :create]
+  end
+
   resources :comments do
     resources :comments
   end
