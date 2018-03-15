@@ -37,8 +37,11 @@ Rails.application.routes.draw do
   #resources :patterns do
   #put :favorite_pattern_id/:favorite/:userid
   #delete :favorite_pattern_id/:favorite/:userid
-#end
+  #end
 
+  put "/patterns/:id/favorite", to: "patterns#favorite"
+
+  delete "/patterns/:id/unfavorite", to: "patterns#unfavorite", as: "unfavorite_pattern"
   #resources :favorite_patterns do
   #  #binding.pry
   #  put :member do
@@ -48,15 +51,15 @@ Rails.application.routes.draw do
   #  put "favorite", on: :member
   #end
 
-  resources :patterns do
-    match :favorite, on: :member, via: [:put, :delete]
-  end
+  #resources :patterns do
+  #  match :favorite, on: :member, via: [:put, :delete]
+  #end
 
-  post 'patterns/:id/favorite', to: 'patterns#favorite'
+  #post 'patterns/:id/favorite', to: 'patterns#favorite'
 
-  resources :patterns do
-    resources :favorite_patterns
-  end
+  #resources :patterns do
+  #  resources :favorite_patterns
+  #end
 
   #resources :users do
   #  resources :needles, :yarns, :other_notions

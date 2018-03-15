@@ -9,15 +9,11 @@
     <% end %>
 
 <h2>Favorite Patterns</h2>
-<% if current_user.favorite_patterns.empty? %>
-<p>No Favorited Patterns</p>
-<% else %>
+
 <ul>
-  <% current_user.favorite_patterns.each do |pattern| %>
-  <li><%= link_to ("#{pattern.name}"), pattern_path(@pattern) %></li>
-  <% end %>
+
 </ul>
-<% end %>
+
 
 <br />
   <%= link_to "Edit your profile", edit_user_path %>

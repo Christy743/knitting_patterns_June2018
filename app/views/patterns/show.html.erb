@@ -27,11 +27,12 @@
 <br />
 
 <h4>Click the button below if you want to 'favorite' this pattern or remove from your favorite patterns: </h4>
-<% if current_user %>
-
-<%= button_to "Delete from Favorites", favorite_pattern_path(@pattern), method: :put %>
+<% if !@favorited %>
+<%= button_to "Add to Favorites", favorite_pattern_path(@pattern), method: :put %>
 <% else %>
-<%= button_to "Add to Favorites", favorite_pattern_path(@pattern), method: :delete %>
+<%= button_to "Delete from Favorites", unfavorite_pattern_path(@pattern), method: :delete %>
+
+
 <% end %>
 
 
@@ -48,5 +49,4 @@ This pattern has been favorited <%= @pattern.favorites_count %> times. <br>
   <%= link_to "Destroy", pattern_path, method: :delete, alert: { confirm: "Are you sure?" } %>
 <% end %>
 
-  <br />
-  <%= link_to "Back to Pattern List", patterns_path %>
+  <br />  <%= link_to "Back to Pattern List", patterns_path %>
