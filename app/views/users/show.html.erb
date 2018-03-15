@@ -12,6 +12,9 @@
 
 <ul>
 
+  <% @user.favorites.each_with_index do |favorite, i| %>
+    <li><%= i + 1 %>. <%= link_to favorite, favorite_pattern_path %></li>
+    <% end %>
 </ul>
 
 

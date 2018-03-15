@@ -42,6 +42,8 @@ Rails.application.routes.draw do
   put "/patterns/:id/favorite", to: "patterns#favorite"
 
   delete "/patterns/:id/unfavorite", to: "patterns#unfavorite", as: "unfavorite_pattern"
+
+  get "/patterns/:id/favorite_patterns", to: "patterns#show", as: "favorite_patterns"
   #resources :favorite_patterns do
   #  #binding.pry
   #  put :member do

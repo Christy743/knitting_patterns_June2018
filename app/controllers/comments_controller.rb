@@ -36,7 +36,7 @@ class CommentsController < ApplicationController
   def find_commentable
     @commentable = Comment.find_by_id(params[:comment_id]) if params[:comment_id]
     @commentable = Pattern.find_by_id(params[:pattern_id]) if params[:pattern_id]
-    @commentable = User.find_by_id(params[:user_id]) if params[:user_id]
+    #@commentable = User.find_by_id(params[:user_id]) if params[:user_id]
   end
 
   #def get_parent
