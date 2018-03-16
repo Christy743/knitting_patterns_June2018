@@ -12,11 +12,13 @@ class PatternsController < ApplicationController
 
   def new
     @pattern = Pattern.new
+    @pattern.favorite_patterns.build
   end
 
   def create
     @pattern = Pattern.new(pattern_params)
     @pattern.user = current_user
+    binding.pry
     if @pattern.save
       redirect_to pattern_path(@pattern), notice: "You have successfully made a pattern!"
     else
@@ -59,7 +61,9 @@ class PatternsController < ApplicationController
 
   def pattern_params
     params.require(:pattern).permit(:id, :name, :content, :materials,
-                                    :needles, :yarn, :weight, :quantity)
+                                    :needles, :yarn, :weight, :quantity,
+                                    favorite_pattern_ids: [],
+                                    favorite_patterns_attributes: [:my_favorite])
   end
 
 end
