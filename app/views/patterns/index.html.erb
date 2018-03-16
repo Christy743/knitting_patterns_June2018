@@ -2,7 +2,7 @@
 <div style="width:500px;height:550px;line-height:2em;overflow:scroll;padding:5px;">
   <ul>
     <% @patterns.each_with_index do |pattern, i| %>
-      <%= i + 1 %>. <%= link_to pattern.name.capitalize, pattern_path(pattern.id) %><br></br>
+      <%= i + 1 %>. <%= link_to pattern.name.capitalize, pattern_path(pattern.id) %><br />
     <% end %>
   </ul>
 </div>
@@ -12,5 +12,5 @@
 <% end %>
 
 <% if current_user.patterns.count == 0 %>
-  <p><%= current_user.username %>, you have no projects. Click on the link above, if you would like to make a new knitting pattern.</p>
+  <h4><%= current_user.username %>, you have no projects. Click on the link above, if you would like to make a new knitting pattern.</h4>
 <% end %>

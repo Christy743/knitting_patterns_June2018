@@ -1,22 +1,24 @@
-<% if current_user = @user.id %>
+<% if current_user = @user.id %><br />
   <h2><%= @user.username %>'s Profile</h2>
-    <p>Email address: <%= @user.email %></p>
-    <p>Bio: <%= @user.bio %></p><br />
+    <p>Email address:  <%= @user.email %></p>
+    <p>Bio:  <%= @user.bio %></p><br />
 
   <h3>Your patterns: </h3>
     <% @user.patterns.each_with_index do |pattern, i| %>
-      <p><%= i + 1 %>. <%= link_to pattern.name.capitalize, pattern_path(pattern.id) %></p><br />
+      <p><%= i + 1 %>. <%= link_to pattern.name.capitalize, pattern_path(pattern) %></p><br />
     <% end %>
+    <br />
 
-<h2>Favorite Patterns</h2>
+<h3>Favorite Patterns</h3>
+trying to show the name of the pattern that was favorited
+ <br />
+ I want to show each favorited pattern in a list just like
+ the pattern list above - one list is the user's patterns and the
+ other list is the favorited patterns. This second list would be a scroll
+ down list.
 
 <ul>
-
-  <% @user.favorites.each_with_index do |favorite, i| %>
-    <li><%= i + 1 %>. <%= link_to favorite, favorite_pattern_path %></li>
-    <% end %>
 </ul>
-
 
 <br />
   <%= link_to "Edit your profile", edit_user_path %>

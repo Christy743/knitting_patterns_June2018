@@ -13,8 +13,6 @@ class SessionsController < ApplicationController
     user = User.find_by(:email => params[:session][:email])
       if user && user.authenticate(params[:session][:password])
         session[:user_id] = user.id
-        #remember user
-        #params[:session][:remember_me] == '1' ? remember(user) : forget(user)
         redirect_to root_path
       else
         flash.now[:notice] = "Could not find that person, sorry!"

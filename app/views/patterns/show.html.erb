@@ -1,18 +1,18 @@
 <br />
-<h3><%= @pattern.name %></h3>
+<h2><%= @pattern.name %></h2>
 
-<h4>Materials and notions:</h4>
-  <%= @pattern.materials %>
+<h3>Materials and notions:</h3>
+  <p><%= @pattern.materials %></p>
 
-<h4>Knitting Needles:</h4>
-  <%= @pattern.needles %>
+<h3>Knitting Needles:</h3>
+  <p><%= @pattern.needles %></p>
 
-<h4>Yarns:</h4>
+<h3>Yarns:</h3>
   <p><%= @pattern.yarn %></p>
   <p>Yarn weight: <%= @pattern.weight %></p>
   <p>Yarn quantity: <%= @pattern.quantity %></p>
 
-<h4>Directions: </h4>
+<h3>Directions: </h3>
   <p><%= @pattern.content %></p>
 
   <h3>Comments</h3>
@@ -22,25 +22,19 @@
   <%= f.submit "Add Comment" %>
   <% end %>
 
-<ul><%= render partial: "comments/comment", collection: @pattern.comments %></ul>
+<ul><%= render partial: "comments/comment", collection: @pattern.comments %></ul><br />
 
-<br />
+<h4>Click the button below if you want to <i>favorite</i> this </h4>
+<h4>pattern or <i>remove</i> from favorite patterns: </h4>
 
-<h4>Click the button below if you want to 'favorite' this pattern or remove from your favorite patterns: </h4>
-<% if !@favorited %>
-<%= button_to "Add to Favorites", favorite_pattern_path(@pattern), method: :put %>
-<% else %>
-<%= button_to "Delete from Favorites", unfavorite_pattern_path(@pattern), method: :delete %>
+  <% if !@favorited %>
+    <%= button_to "Add to Favorites", favorite_pattern_path(@pattern), method: :put %>
+  <% else %>
+    <%= button_to "Delete from Favorites", unfavorite_pattern_path(@pattern), method: :delete %>
+  <% end %>
+  <br />
 
-
-<% end %>
-
-
-
-
-<br />
-
-This pattern has been favorited <%= @pattern.favorites_count %> times. <br>
+<h4>This pattern has been favorited <%= @pattern.favorites_count %> times. </h4><br>
 
 <% if current_user == @pattern.user %>
   <br />
@@ -48,5 +42,5 @@ This pattern has been favorited <%= @pattern.favorites_count %> times. <br>
   <br />
   <%= link_to "Destroy", pattern_path, method: :delete, alert: { confirm: "Are you sure?" } %>
 <% end %>
-
-  <br />  <%= link_to "Back to Pattern List", patterns_path %>
+<br />
+<%= link_to "Back to Pattern List", patterns_path %>
