@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @patterns = @user.patterns
     @user.favorites = current_user.favorites
-    #binding.pry
+    binding.pry
   end
 
   def new
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    binding.pry
+    #binding.pry
     if @user.save
       session[:user_id] = @user.id
       redirect_to user_path(@user), notice: "Welcome! You have successfully made a new profile!"
