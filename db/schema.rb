@@ -10,22 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180316175623) do
+ActiveRecord::Schema.define(version: 20180325014652) do
 
   create_table "comments", force: :cascade do |t|
     t.string "content"
-    t.string "title"
     t.integer "commentable_id"
     t.string "commentable_type"
     t.datetime "created_at"
     t.datetime "update_at"
     t.integer "user_id"
+    t.string "username"
   end
 
   create_table "favorite_patterns", force: :cascade do |t|
     t.integer "user_id"
     t.integer "pattern_id"
-    t.string "my_favorite" #this is the owner's pattern that the owner make their favorite
+    t.string "my_favorite"
   end
 
   create_table "patterns", force: :cascade do |t|

@@ -18,7 +18,6 @@ class PatternsController < ApplicationController
   def create
     @pattern = Pattern.new(pattern_params)
     @pattern.user = current_user
-    #binding.pry
     if @pattern.save
       redirect_to pattern_path(@pattern), notice: "You have successfully made a pattern!"
     else

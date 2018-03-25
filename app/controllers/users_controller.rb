@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
-  #before_action :authenticate
+  before_action :authenticate
 
   def index
     @patterns = Pattern.all
@@ -10,18 +10,15 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @patterns = @user.patterns
     @user.favorites = current_user.favorites
-    binding.pry
+    @favorite_patterns = @user.favorite_patterns
   end
 
   def new
     @user = User.new
-    #@user.favorite_pattern.build
-    #binding.pry
   end
 
   def create
     @user = User.new(user_params)
-    #binding.pry
     if @user.save
       session[:user_id] = @user.id
       redirect_to user_path(@user), notice: "Welcome! You have successfully made a new profile!"
