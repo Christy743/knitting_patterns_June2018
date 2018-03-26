@@ -8,11 +8,13 @@ class PatternsController < ApplicationController
     @pattern = Pattern.find(params[:id])
     @comments = @pattern.comments
     @favorited = FavoritePattern.find_by(user:current_user, pattern: @pattern).present?
+
   end
 
   def new
     @pattern = Pattern.new
     @pattern.favorite_patterns.build
+    @pattern.favorite_patterns << FavoritePattern.new
   end
 
   def create
@@ -62,7 +64,7 @@ class PatternsController < ApplicationController
     params.require(:pattern).permit(:id, :name, :content, :materials,
                                     :needles, :yarn, :weight, :quantity,
                                     favorite_pattern_ids: [],
-                                    favorite_patterns_attributes: [:my_favorite])
+                                    favorite_patterns_attributes: [:id, :user_id, :pattern_id, :my_favorite])
   end
 
 end

@@ -12,8 +12,10 @@ class Pattern < ActiveRecord::Base
     favorite_pattern_attributes.values.each do |favorite_pattern_attribute|
       if favorite_pattern_attributes[:my_favorite].present?
         favorite_pattern = FavoritePattern.find_or_create_by(my_favorite: favorite_pattern_attributes[:my_favorite])
+        if !self.favorite_patterns.include?(favorite_pattern)
         self.favorite_patterns.build(my_favorite: my_favorite)
         end
+      end 
     end
   end
 

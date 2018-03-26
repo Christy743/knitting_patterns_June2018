@@ -7,17 +7,8 @@
     <% @user.patterns.each_with_index do |pattern, i| %>
       <p><%= i + 1 %>. <%= link_to pattern.name.capitalize, pattern_path(pattern) %></p>
     <% end %>
-    <br />
+      <br />
 
-
- <h3>Favorite Yarn</h3>
-<%= @favorite_pattern.my_favorite %>
-
-
-<ul>
-</ul>
-
-<br />
-  <%= link_to "Edit your profile", edit_user_path %>
+    <%= link_to "Edit your profile", edit_user_path %>
 
 <% end %>

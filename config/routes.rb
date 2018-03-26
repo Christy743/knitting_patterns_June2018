@@ -13,10 +13,6 @@ Rails.application.routes.draw do
     resources :comments
   end
 
-  resources :user do
-    resources :comments, only: [:new, :create]
-  end
-
   resources :comments do
     resources :comments
   end
@@ -26,9 +22,7 @@ Rails.application.routes.draw do
   end
 
   put "/patterns/:id/favorite", to: "patterns#favorite"
-
   delete "/patterns/:id/unfavorite", to: "patterns#unfavorite", as: "unfavorite_pattern"
-
   get "/patterns/:id/favorite_patterns/:id", to: "patterns#show", as: "favorite_patterns"
 
 end
