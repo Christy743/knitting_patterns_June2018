@@ -4,6 +4,9 @@ class Pattern < ActiveRecord::Base
   has_many :favorite_patterns, dependent: :destroy
   has_many :favorited_by, through: :favorite_patterns, source: :user
 
+  validates_presence_of :name, :content, :materials,
+                        :needles, :yarn, :weight, :quantity
+
   def favorites_count
     self.favorite_patterns.size
   end
@@ -15,7 +18,7 @@ class Pattern < ActiveRecord::Base
         if !self.favorite_patterns.include?(favorite_pattern)
         self.favorite_patterns.build(my_favorite: my_favorite)
         end
-      end 
+      end
     end
   end
 

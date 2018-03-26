@@ -29,38 +29,34 @@ Open a web browser and navigate to:
 
 # Models
 
-  This app uses # ActiveRecord Models: ```User, Pattern, Comment```. The join table is ```put join table```.
+  This app uses # ActiveRecord Models: ```User, Pattern, Comment, FavoritePattern```. The join table is ```favorite_patterns```.
 
   User:
     ```
     has_many :patterns
-    has_many :comments
+    has_many :favorite_patterns, dependent: :destroy
+    has_many :favorites, through: :favorite_patterns, source: :pattern
     ```
 
   Pattern:
     ```
-    has_many :users
+    belongs_to :user
+    has_many :comments, as: :commentable
+    has_many :favorite_patterns, dependent: :destroy
+    has_many :favorited_by, through: :favorite_patterns, source: :user
     ```
 
   Comment:
     ```
+    belongs_to :commentable, polymorphic: true
+    has_many :comments, as: :commentable
+    ```
+
+  FavoritePattern:
+    ```
     belongs_to :user
     belongs_to :pattern
     ```
-
-  ## Contributing
-
-  Bug reports and pull requests are welcome on GitHub at # Models
-
-  This app uses 5 ActiveRecord Models: ``````. The join table is ``````.
-
-  User:
-    ```
-    has_many
-    has_many
-    has_many
-    ```
-
 
   ## Contributing
 
@@ -74,22 +70,4 @@ Open a web browser and navigate to:
 
   The app is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Ruby version: ruby 2.3.1
