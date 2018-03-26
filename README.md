@@ -10,7 +10,7 @@ All user data is validated using ActiveRecord ORM and Rails model validations.
 
 Users can sign in, sign out and can also sign in by GitHub without having to always putting in their email and password.
 
-##Installation
+Installation
 
 Fork and clone this repository.
 

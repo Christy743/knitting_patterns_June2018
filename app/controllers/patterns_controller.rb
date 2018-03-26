@@ -8,7 +8,6 @@ class PatternsController < ApplicationController
     @pattern = Pattern.find(params[:id])
     @comments = @pattern.comments
     @favorited = FavoritePattern.find_by(user:current_user, pattern: @pattern).present?
-
   end
 
   def new

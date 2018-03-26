@@ -3,11 +3,15 @@
     <p>Email address:  <%= @user.email %></p>
     <p>Bio:  <%= @user.bio %></p><br />
 
+<% if @user.patterns != nil %>
+  <%= link_to "To Make a New Pattern", new_pattern_path %>
+<% else %>
   <h3>Your patterns: </h3>
     <% @user.patterns.each_with_index do |pattern, i| %>
       <p><%= i + 1 %>. <%= link_to pattern.name.capitalize, pattern_path(pattern) %></p>
     <% end %>
       <br />
+<% end %>
 
     <%= link_to "Edit your profile", edit_user_path %>
 
