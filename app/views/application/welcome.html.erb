@@ -1,7 +1,6 @@
 <% if !current_user %>
   <h1>Welcome to Knit Patterns!</h1>
     <h3>A place to digitally store and share your patterns on your computer or tablet.</h3><br />
-    <p><%= link_to "Sign up", new_user_path %> here to start!</p>
 <% else %>
   <% current_user %>
     <h1>Welcome to Knit Patterns!</h1><br>

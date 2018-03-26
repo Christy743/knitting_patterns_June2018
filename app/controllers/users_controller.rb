@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
-  before_action :authenticate
 
   def index
     @patterns = Pattern.all
@@ -10,7 +9,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @patterns = @user.patterns
     @user.favorites = current_user.favorites
-    @favorite_patterns = @user.favorite_patterns
   end
 
   def new
@@ -50,7 +48,9 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :username, :id, :email,
                                  :password, :password_confirmation,
-                                 :bio)
+                                 :bio, favorite_pattern_ids: [],
+                                  favorite_patterns_attributes:
+                                [:user_id, :pattern_id, :my_favorite])
   end
 
 end

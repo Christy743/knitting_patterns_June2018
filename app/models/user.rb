@@ -13,6 +13,14 @@ class User < ActiveRecord::Base
                     uniqueness: true
   validates :password, length: { in: 6..72 }
 
+  def self.current
+    Thread.current[:user]
+  end
+
+  def self.current=(user)
+    Thread.current[:user] = user
+  end
+
   def self.find_or_create_by_omniauth(auth_hash)
     self.where(email: auth_hash["info"]["email"]).first_or_create do |user|
       user.password = SecureRandom.hex
