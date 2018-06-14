@@ -84,16 +84,16 @@
    text-shadow: none;
  }
 
- ::selection {
+ /*::selection {
    color: #fff;
    background: #212529;
    text-shadow: none;
- }
+ }*/
 
- img::selection {
+ /*img::selection {
    color: #fff;
    background: transparent;
- }
+ }*/
 
  img::-moz-selection {
    color: #fff;
@@ -192,7 +192,7 @@
    background-image: url("../img/header.jpg");
    background-position: center center;
    -webkit-background-size: cover;
-   -moz-background-size: cover;
+   /*-moz-background-size: cover;*/
    -o-background-size: cover;
    background-size: cover;
  }
@@ -366,7 +366,7 @@ input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
   width: 20%;
   margin-bottom: 10px;
-  @include box_sizing;
+/*  @include box_sizing;*/
 }
 
 input {
@@ -375,26 +375,16 @@ input {
 
 #error_explanation {
   color: red;
-  ul {
-    color: red;
-    margin: 0 0 30px 0;
-  }
+  margin: 0 0 30px 0;
 }
 
-.field_with_errors {
-  @extend .has-error;
-  .form-control {
-    color: $state-danger-text;
-  }
-}
+/*.field_with_errors {
+  color: $state-danger-text;
+}*/
 
 .checkbox {
   margin-top: -10px;
   margin-bottom: 10px;
-  span {
-    margin-left: 20px;
-    font-weight: normal;
-  }
 }
 
 #session_remember_me {

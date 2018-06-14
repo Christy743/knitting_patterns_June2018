@@ -36,6 +36,15 @@
 
 <h4>This pattern has been favorited <%= @pattern.favorites_count %> times. </h4><br />
 
+<!-- Not sure how to do this yet, but would like to display favorites with 'next' button
+<p>
+  <%= link_to "Favorite Patterns", favorite_patterns_path(@pattern) %>
+</p>
+
+<div class="favs">
+<div>
+-->
+
 <% if current_user == @pattern.user %>
   <br />
   <%= link_to "Edit this Pattern", edit_pattern_path %>

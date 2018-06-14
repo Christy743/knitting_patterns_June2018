@@ -1,7 +1,12 @@
-$(function() {
-  console.log('patterns js loaded')
-  $("form.button_to").on("submit", function(e) {
-    alert("You clicked this button");
-    e.preventDefault();
-  });
-})
+//$(function() {
+//  $("form.button_to").on("submit", function(e) {
+//    debugger
+//      $.ajax({
+//        method: "GET",
+//        url: this.href
+//      }).done(function( response ) {
+//        $("div.favs").html(response)
+//        });
+//    e.preventDefault();
+//  });
+//})

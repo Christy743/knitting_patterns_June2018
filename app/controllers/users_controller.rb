@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def index
     @patterns = Pattern.all
+    @favorite_patterns = FavoritePattern.all
   end
 
   def show

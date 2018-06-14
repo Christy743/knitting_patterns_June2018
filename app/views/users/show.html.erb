@@ -5,13 +5,13 @@
 
 <% if @user.patterns != nil %>
   <%= link_to "To Make a New Pattern", new_pattern_path %>
-<% else %>
+<% end %>
+
   <h3>Your patterns: </h3>
     <% @user.patterns.each_with_index do |pattern, i| %>
-      <p><%= i + 1 %>. <%= link_to pattern.name.capitalize, pattern_path(pattern) %></p>
+      <p><%= i + 1 %>. <%= link_to pattern.name.capitalize, pattern_path(pattern) %></p> <!--hijack this link? -->
     <% end %>
       <br />
-<% end %>
       <br />
 
     <%= link_to "Edit your profile", edit_user_path %>
