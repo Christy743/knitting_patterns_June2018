@@ -37,6 +37,7 @@ gem 'dotenv-rails'
 gem 'omniauth-github'
 gem 'pry-rails'
 gem 'oauth2'
+gem 'jquery-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

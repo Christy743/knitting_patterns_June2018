@@ -10,15 +10,11 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
 
-$(document).on('turbolinks:load', function() {
-});
-
-$(document).ready(function() {
-});
 
 (function($) {
   "use strict"; // Start of use strict
