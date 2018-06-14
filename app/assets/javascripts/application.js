@@ -14,6 +14,12 @@
 //= require turbolinks
 //= require_tree .
 
+$(document).on('turbolinks:load', function() {
+});
+
+$(document).ready(function() {
+});
+
 (function($) {
   "use strict"; // Start of use strict
 

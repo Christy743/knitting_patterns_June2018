@@ -35,11 +35,6 @@
     <br />
     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 
-      <h4>What is your favorite yarn?</h4>
-      <%= f.fields_for :favorite_patterns do |ff| %>
-        <%= ff.text_field :my_favorite %>
-      <% end %><br />
-
     <%= f.submit class: "btn btn-primary" %>
 <% end %>
   </div>

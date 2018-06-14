@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get "/auth/:provider/callback", to: "sessions#create"
+  get '/auth/:provider/callback', to: 'sessions#create'
   get '/signin' => 'sessions#new'
   post '/signin' => 'sessions#create'
   delete '/signout' => 'sessions#destroy'

@@ -36,6 +36,7 @@ gem 'omniauth-facebook'
 gem 'dotenv-rails'
 gem 'omniauth-github'
 gem 'pry-rails'
+gem 'oauth2'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
