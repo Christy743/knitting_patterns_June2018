@@ -1,5 +1,5 @@
-<h2>Pattern List</h2><br />
-<div style="width:500px;height:550px;line-height:2em;overflow:scroll;padding:5px;">
+<h2>All Patterns</h2><br />
+<div style="width:500px;height:250px;line-height:2em;overflow:scroll;padding:5px;">
   <ul>
     <% @patterns.each_with_index do |pattern, i| %>
       <%= i + 1 %>. <%= link_to pattern.name.capitalize, pattern_path(pattern.id) %><br />

@@ -2,6 +2,8 @@ class PatternsController < ApplicationController
 
   def index
     @patterns = Pattern.all
+
+    #render :layout => false
   end
 
   def show
