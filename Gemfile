@@ -38,6 +38,7 @@ gem 'omniauth-github'
 gem 'pry-rails'
 gem 'oauth2'
 gem 'jquery-rails'
+gem 'active_model_serializers'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

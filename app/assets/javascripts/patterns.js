@@ -1,12 +1,11 @@
-//$(function() {
-//  $("form.button_to").on("submit", function(e) {
-//    debugger
-//      $.ajax({
-//        method: "GET",
-//        url: this.href
-//      }).done(function( response ) {
+$(function() {
+  $("form.button_to").on("submit", function(e) {
+      //$.ajax({
+      //  method: "POST",
+      //  url: this.action
+      //}).success(function( response ) {
 //        $("div.favs").html(response)
 //        });
-//    e.preventDefault();
-//  });
-//})
+    e.preventDefault();
+  });
+})
