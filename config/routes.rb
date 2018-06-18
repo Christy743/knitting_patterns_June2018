@@ -25,4 +25,5 @@ Rails.application.routes.draw do
   delete "/patterns/:id/unfavorite", to: "patterns#unfavorite", as: "unfavorite_pattern"
   get "/patterns/:id/favorite_patterns/:id", to: "patterns#show", as: "favorite_patterns"
 
+  post "favorite_patterns/:pattern_id" => "favorite_patterns#create", :as => :favorited
 end

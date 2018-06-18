@@ -6,10 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
       <title>KnitPatterns</title>
 
-        <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= csrf_meta_tags %>
   </head>
 
@@ -29,9 +28,9 @@
 
     <footer class="container-fluid text-center">
       <a class="github" href="https://github.com/Christy743/knitting_patterns_rails">
-        <img src="Octocat.png" width="50px"/>
         <p class="small text-muted">Christina<br> Chronister</p>
       </a>
+      <!--<img src="octocat.png" width="50px"/> -->
     </footer>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
