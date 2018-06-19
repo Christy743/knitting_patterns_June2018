@@ -4,6 +4,10 @@ class PatternsController < ApplicationController
     @patterns = Pattern.all
 
     #render :layout => false
+    #respond_to do |format|
+    # format.html {render 'index.html', :layout => false}
+    # format.js {render 'index.js', :layout => false}
+    #end
   end
 
   def show

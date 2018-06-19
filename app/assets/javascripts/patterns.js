@@ -15,6 +15,15 @@ $(function() {
       url: this.action,
       data: $(this).serialize(),
       success: function(response) {
+        //console.log(response)
+        //callback(response);
+        return response.json();
+
+        //work on one, i.e., delete to see how that looks
+        //like Avi's video in appending to a div or h tag in the view
+        //location.action = location.action
+        //window.location.reload();
+        //location.reload(false)
         //location.reload()
         //debugger
         //What I want to do is have a response of
