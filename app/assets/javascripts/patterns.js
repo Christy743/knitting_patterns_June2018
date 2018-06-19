@@ -16,8 +16,13 @@ $(function() {
       data: $(this).serialize(),
       success: function(response) {
         //console.log(response)
+        $("div.fav_unfav").html(response)
+        //var $h2 = $("h2.fav_unfav")
+        //$h2.append(response);
+
+        //console.log(response)
         //callback(response);
-        return response.json();
+        //return response.json();
 
         //work on one, i.e., delete to see how that looks
         //like Avi's video in appending to a div or h tag in the view
@@ -49,3 +54,16 @@ $(function() {
     e.preventDefault();
   });
 })
+
+$(() => {
+  bindClickHandlers()
+})
+
+const bindClickHandlers = () => {
+  $(".all_patterns").on("click", (e) => {
+    e.preventDefault()
+    fetch(`/patterns.json`)
+      .then(response => response.json())
+      .then(data => console.log(data))
+  })
+}

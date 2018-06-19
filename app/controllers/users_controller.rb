@@ -4,6 +4,11 @@ class UsersController < ApplicationController
   def index
     @patterns = Pattern.all
     @favorite_patterns = FavoritePattern.all
+
+    respond_to do |format|
+     format.html
+     format.json {render json: @patterns}
+    end
   end
 
   def show
