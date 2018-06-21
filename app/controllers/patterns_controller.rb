@@ -2,13 +2,13 @@ class PatternsController < ApplicationController
 
   def index
     @patterns = Pattern.all
-
+    #render json: @patterns
     #render :layout => false
-    respond_to do |format|
-     format.html
-     format.json {render json: @patterns}
-    end
-    
+    #respond_to do |format|
+    # format.html
+    # format.json {render json: @patterns}
+    #end
+
   end
 
   def show
@@ -53,15 +53,17 @@ class PatternsController < ApplicationController
   end
 
   def favorite
+    #binding.pry
     @pattern = Pattern.find(params[:id])
       current_user.favorites << @pattern
-      redirect_to patterns_path, notice: "Added #{@pattern.name} to favorites"
+      #redirect_to patterns_path, notice: "Added #{@pattern.name} to favorites"
   end
 
   def unfavorite
+    #binding.pry
     @pattern = Pattern.find(params[:id])
       current_user.favorites.delete(@pattern)
-      redirect_to patterns_path, notice: "Removed #{@pattern.name} from favorites"
+      #redirect_to patterns_path, notice: "Removed #{@pattern.name} from favorites"
   end
 
   private

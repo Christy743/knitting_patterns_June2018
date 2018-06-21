@@ -1,69 +1,17 @@
 $(function() {
   $("form.button_to").on("submit", function(e) {
-    //alert("You clicked SUBMIT")
-    //url = this.action
-    //data = $(this).serialize();
-      //debugger
-          //{
-    //  'authenticity_token': $("input[name='authenticity_token']").attr("value"),
-    //  'favorite': $("input[value='put']").attr("value"),
-    //  'unfavorite': $("input[value='delete']").attr("value")
-    //};
+      e.preventDefault();
 
     $.ajax({
       type: ($("input[name='_method']").val() || this.method),
       url: this.action,
       data: $(this).serialize(),
-      success: function(response) {
-        //console.log(response)
-        $("div.fav_unfav").html(response)
-        //var $h2 = $("h2.fav_unfav")
-        //$h2.append(response);
-
-        //console.log(response)
-        //callback(response);
-        //return response.json();
-
-        //work on one, i.e., delete to see how that looks
-        //like Avi's video in appending to a div or h tag in the view
-        //location.action = location.action
-        //window.location.reload();
-        //location.reload(false)
-        //location.reload()
-        //debugger
-        //What I want to do is have a response of
-        //favorite or unfavorite with my toggle button:
-        //if (action === put) {
-        //  "You have favorited this pattern."
-        //} else {
-        //  "You have unfavorited this pattern."
-        //}
-        //var $ul = $("div.comments ul")
-        //$ul.append(response)
-      }
-    });
-
-      //$.ajax({
-      //  url: $("form.button_to").attr("action"),
-      //  type: "POST",
-      //  data: $("form.button_to").serialize(),
-      //  success: function() {
-      //    alert("You've Favorited This Pattern.")
-      //  }
-      //});
-    e.preventDefault();
-  });
-})
-
-$(() => {
-  bindClickHandlers()
-})
-
-const bindClickHandlers = () => {
-  $(".all_patterns").on("click", (e) => {
-    e.preventDefault()
-    fetch(`/patterns.json`)
-      .then(response => response.json())
-      .then(data => console.log(data))
-  })
-}
+    }).success(function( params ) {
+         if ( params === "delete" ) {
+           alert( "You have unfavorited this pattern." );
+         } else {
+           alert( "You have favorited this pattern." );
+         }; //closing of if statement
+      }); //closing of success params function
+  }); //closing of form button submit function
+}) //closing of opening function
