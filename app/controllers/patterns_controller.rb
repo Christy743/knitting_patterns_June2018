@@ -1,13 +1,14 @@
 class PatternsController < ApplicationController
+before_action :set_pattern, only: [:show, :edit, :update, :destroy]
 
   def index
     @patterns = Pattern.all
     #render json: @patterns
     #render :layout => false
-    #respond_to do |format|
-    # format.html
-    # format.json {render json: @patterns}
-    #end
+    respond_to do |format|
+     format.html
+     format.json {render json: @patterns}
+    end
 
   end
 
@@ -15,6 +16,11 @@ class PatternsController < ApplicationController
     @pattern = Pattern.find(params[:id])
     @comments = @pattern.comments
     @favorited = FavoritePattern.find_by(user:current_user, pattern: @pattern).present?
+
+    respond_to do |format|
+      format.html
+      format.json {render json: @pattern}
+    end
   end
 
   def new
@@ -73,6 +79,10 @@ class PatternsController < ApplicationController
                                     :needles, :yarn, :weight, :quantity,
                                     favorite_pattern_ids: [],
                                     favorite_patterns_attributes: [:id, :user_id, :pattern_id, :my_favorite])
+  end
+
+  def set_pattern
+    @pattern = Pattern.find_by_id(params[:id])
   end
 
 end

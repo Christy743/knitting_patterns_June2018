@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     @favorite_patterns = FavoritePattern.all
 
     respond_to do |format|
-     format.html
+     format.html {render :index}
      format.json {render json: @patterns}
     end
   end
