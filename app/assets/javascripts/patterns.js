@@ -16,30 +16,53 @@ $(function() {
           $('#all_patterns').append(patternHtml)
         });
       });
-  });
+    });
 
-  $(document).on('click', ".show_pattern", function(e) {
-    e.preventDefault()
-    let id = $(this).attr("data-id")
-    fetch(`/patterns/${id}.json`)
-    .then(response => response.json())
-    .then(pattern => {
-      console.log(pattern)
-    })
-  })
+    function Pattern(pattern) {
+      this.name = pattern.name
+      this.id = pattern.id
+    }
+
+    Pattern.prototype.formatIndex = function() {
+      let patternHtml = `
+        <a href="/patterns/${this.id}" data-id="${this.id}" class="show_pattern"><h1>${this.name}</h1></a>
+      `
+      return patternHtml
+    }
 })
 
-function Pattern(pattern) {
-  this.name = pattern.name
-  this.id = pattern.id
-}
+//  $(document).on('click', ".show_pattern", function(e) {
+//    e.preventDefault()
+//    $("#all_patterns").html("")
+//    $(".pattern_list").html("")
+//    let id = $(this).attr("data-id")
 
-Pattern.prototype.formatIndex = function() {
-  let patternHtml = `
-    <a href="/patterns/${this.id}" data-id="${this.id}" class="show_pattern"><h1>${this.name}</h1></a>
-  `
-  return patternHtml
-}
+//    $.ajax({
+//      url: this.href,
+//      dataType: 'json',
+//      data: $(this).serialize(),
+//    }).success(function( response ) {
+//      let pattern = jQuery(response)
+//
+//      let newPattern = new Pattern(pattern)
+//
+//      let patternHtml = newPattern.formatShow()
+//
+//      $('#all_patterns').append(patternHtml)
+//    })
+//   })
+//
+//   function Pattern(pattern) {
+//     this.name = pattern.name
+//     this.id = pattern.id
+//   }
+//
+//Pattern.prototype.formatShow = function() {
+//  let patternHtml = `
+//    <h3>${this.name}</h3>
+//  `
+//  return patternHtml
+//}
 
 
 

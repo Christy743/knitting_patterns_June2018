@@ -11,11 +11,12 @@ Specs:
           data to manipulate to show only the name of each pattern in the DOM while keeping the href for each pattern
           listed.
 []    Include at least one has_many relationship in information rendered via JSON and appended to the DOM.
-[x]    Use your Rails API and a form to create a resource and render the response without a page refresh.
+[]    Use your Rails API and a form to create a resource and render the response without a page refresh.
         --
-        --favorite/unfavorite button - questions on how to make this work
+        --Favorite/unfavorite button - questions on how to make this work
 [x]    Translate JSON responses into js model objects.
-
+        --Made a Pattern Serializer file and used the :id and :name attributes and built a Pattern function to include these
+          attributes. 
 [x]    At least one of the js model objects must have at least one method added by your code to the prototype.
         --Made a variable 'patternHtml' with a template.
         --Used pattern prototype to format the user's pattern index on the User show page.
