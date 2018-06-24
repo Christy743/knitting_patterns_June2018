@@ -29,42 +29,40 @@ $(function() {
       `
       return patternHtml
     }
+
+    $(document).on('click', 'next_pattern', function() {
+      let id = $(this).attr('data-id')
+      fetch(`patterns/${id}/next`)
+
+    })
+
+  $(".favorite").on('click', function(e) {
+    e.preventDefault();
+
+    $.ajax({
+      method: 'get',
+      //type: ($("input[name='_method']").val() || this.method),
+      url: this.href,
+      dataType: 'json',
+      data: $(this).serialize(),
+    }).success(function( response ) {
+      $(".favorite").html("")
+        let pattern = jQuery(response)
+        let newPattern = new Pattern(pattern)
+        let patternHtml = newPattern.formatShow()
+        $('#favorite_pattern').append(patternHtml)
+    });
+  });
+
+   Pattern.prototype.formatShow = function() {
+     let patternHtml = `
+     <h3>${this.name}</h3>
+     <button class="next_pattern">Next</button>
+     `
+     return patternHtml
+   }
+
 })
-
-//  $(document).on('click', ".show_pattern", function(e) {
-//    e.preventDefault()
-//    $("#all_patterns").html("")
-//    $(".pattern_list").html("")
-//    let id = $(this).attr("data-id")
-
-//    $.ajax({
-//      url: this.href,
-//      dataType: 'json',
-//      data: $(this).serialize(),
-//    }).success(function( response ) {
-//      let pattern = jQuery(response)
-//
-//      let newPattern = new Pattern(pattern)
-//
-//      let patternHtml = newPattern.formatShow()
-//
-//      $('#all_patterns').append(patternHtml)
-//    })
-//   })
-//
-//   function Pattern(pattern) {
-//     this.name = pattern.name
-//     this.id = pattern.id
-//   }
-//
-//Pattern.prototype.formatShow = function() {
-//  let patternHtml = `
-//    <h3>${this.name}</h3>
-//  `
-//  return patternHtml
-//}
-
-
 
 //$(function() {
 //  $("form.button_to").on("submit", function(e) {

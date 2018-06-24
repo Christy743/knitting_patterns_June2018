@@ -1,5 +1,5 @@
 class PatternsController < ApplicationController
-before_action :set_pattern, only: [:show, :edit, :update, :destroy]
+before_action :set_pattern, only: [:show, :edit, :update, :destroy, :next]
 
   def index
     @patterns = Pattern.all
@@ -37,6 +37,11 @@ before_action :set_pattern, only: [:show, :edit, :update, :destroy]
     else
       render :new
     end
+  end
+
+  def next
+    @next_pattern = @pattern.next
+    render json: @next_pattern
   end
 
   def edit

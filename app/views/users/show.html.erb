@@ -31,9 +31,13 @@
 
 
     <h3>Your favorite patterns: </h3>
-    <% @user.favorite_patterns.each_with_index do |fav, i| %>
-    <p><%= i + 1 %>. <%= link_to @patterns.name, favorite_patterns_path %></p>
+    <% @user.favorite_patterns.each do |fav| %>
+    <p><%= link_to @patterns.name, favorite_patterns_path, :class => "favorite" %></p>
     <% end %>
+
+    <div id="favorite_pattern">
+      <%= yield %>
+    </div>
 
 
 <% end %>

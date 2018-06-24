@@ -26,4 +26,6 @@ Rails.application.routes.draw do
   get "/patterns/:id/favorite_patterns/:id", to: "patterns#show", as: "favorite_patterns"
 
   post "favorite_patterns/:pattern_id" => "favorite_patterns#create", :as => :favorited
+
+  get 'patterns/:id/next', to: 'patterns#next'
 end
