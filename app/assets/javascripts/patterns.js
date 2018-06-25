@@ -36,62 +36,28 @@ $(function() {
     e.preventDefault();
 
     $.ajax({
-      type: ($("input[name='_method']").val() || this.method),
+      type: this.method,
       url: this.action,
       data: $(this).serialize(),
       success: function( response ){
-        console.log(response)
+        var $ul = $("div.comments ul")
+        $ul.append(response)
         $("#comment_content").val("");
-        var $ol = $("div.comments ol")
-        $ol.append(response)
       }
     })
   })
 })
 
-//Code below is kept to discuss how to make this function work with the
-// 'add to favorites' and 'remove from favorites' button
-//$(function() {
-//  $("form.button_to").on("submit", function(e) {
-//      e.preventDefault();
+$(function() {
+  $("form.button_to").on("submit", function(e) {
+      e.preventDefault();
 
-//    $.ajax({
-//      type: ($("input[name='_method']").val() || this.method),
-//      url: this.action,
-//      data: $(this).serialize(),
-//    }).success(function( params ) {
-        //var pattern = params;
-        //$(".fav").text(pattern["delete"]);
-//         if ( params === "delete" ) {
-             //$("form.button_to").html("hello")
-//    })
-//  })
-//})
-           //$('#remove').on('click', function() {
-           	//$('.favorite').remove();
-             //$('#remove').addClass('hidden')
-             //$('#add').removeClass('hidden')
-//             $("You have unfavorited this pattern").append("#remove") ;
-//           }
-
-
-        // } else if ( params === "put") {
-        //   return "You have favorited this pattern." ;
-         //} else {
-        //   return "This is not working?";
-        // }; //closing of if statement
-      //}); //closing of success params function
-  //}); //closing of form button submit function
-//}) //closing of opening function
-
-//$('#add').on('click', function() {
-//	$('#root').append("<div class='favorite'></div>");
-//  $('#remove').removeClass('hidden')
-//  $('#add').addClass('hidden')
-//})
-
-//$('#remove').on('click', function() {
-//	$('.favorite').remove();
-//  $('#remove').addClass('hidden')
-//  $('#add').removeClass('hidden')
-//})
+    $.ajax({
+      type: this.method,
+      url: this.action,
+      data: $(this).serialize(),
+    }).success(function( params ) {
+      window.location.reload();
+    })
+  })
+})
