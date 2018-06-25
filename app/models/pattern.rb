@@ -1,6 +1,6 @@
 class Pattern < ActiveRecord::Base
   belongs_to :user
-  has_many :comments, as: :commentable
+  has_many :comments  #, as: :commentable
   has_many :favorite_patterns, dependent: :destroy
   has_many :favorited_by, through: :favorite_patterns, source: :user
 
@@ -30,7 +30,7 @@ class Pattern < ActiveRecord::Base
     else
       Pattern.first
     end
-    
+
   end
 
 end
