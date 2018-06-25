@@ -1,24 +1,33 @@
 class CommentsController < ApplicationController
   #before_action :find_commentable
+  before_action :set_pattern
+
+  def index
+    @comments = @pattern.comments
+  end
 
   def new
     @comment = Comment.new
   end
 
   def create
-    @comment = @pattern.comments.build(comment_params)
+    @comment = @pattern.comments.build(comments_params)
     #@comment = @commentable.comments.build(comment_params)
-    #if @comment.save
-    #  redirect_to patterns_path, notice: "Thank you for your comment!"
-    #else
-    #  render :new
-    #end
+    if @comment.save
+      render "comments/show", :layout => false
+    else
+      render "patterns/show"
+    end
   end
 
   private
 
-  def comment_params
-    params.require(:comment).permit(:id, :content, :commentable_id, :commentable_type)
+  def comments_params
+    params.require(:comment).permit(:content)
+  end
+
+  def set_pattern
+    @pattern = Pattern.find(params[:pattern_id])
   end
 
   #def find_commentable

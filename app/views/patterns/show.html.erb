@@ -17,38 +17,26 @@
 
   <h3>Comments</h3>
 
-  <!-- <%#= form_for [@pattern, Comment.new] do |f| %>
-  <%#= f.text_area :content, placeholder: "Add a comment" %><br />
-  <%#= f.submit "Add Comment" %>
-  <%# end %>  -->
-
+<div class="comments">
   <%= render 'comments/comments' %>
+</div>
 
-<%= form_for(@comment, :url => pattern_comments_path(@pattern)) do |f| %>
-  <%= f.text_area :content %>
+<%= form_for([@pattern, @comment]) do |f| %>
+<%= f.text_area :content %>
 
-  <p><%= f.submit %></p>
-
+<p><%= f.submit "Create Comment" %></p>
 <% end %>
-
-<!--  <form>
-    <textarea></textarea>
-
-    <p><input type="submit"></p>
-  </form> -->
-
-<!-- <ul><%#= render partial: "comments/comment", collection: @pattern.comments %></ul><br /> -->
 
 <h4>Click the button below if you want to <i>favorite</i> this </h4>
 <h4>pattern or <i>remove</i> from favorite patterns: </h4>
 
-<div id="add"></div>
-<div id="remove" class="hidden"></div>
+<!--<div id="add"></div>
+<div id="remove" class="hidden"></div> -->
 
 <!-- <button id='add'>Add</button>
 <button id='remove' class='hidden'>Remove</button> -->
 
-<div id="root"></div>
+<!-- <div id="root"></div> -->
 
   <% if !@favorited %>
     <%= button_to "Add to Favorites", favorite_pattern_path(@pattern), method: :put %>
