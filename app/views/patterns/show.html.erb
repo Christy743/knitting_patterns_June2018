@@ -17,12 +17,27 @@
 
   <h3>Comments</h3>
 
-  <%= form_for [@pattern, Comment.new] do |f| %>
-  <%= f.text_area :content, placeholder: "Add a comment" %><br />
-  <%= f.submit "Add Comment" %>
-  <% end %>
+  <!-- <%#= form_for [@pattern, Comment.new] do |f| %>
+  <%#= f.text_area :content, placeholder: "Add a comment" %><br />
+  <%#= f.submit "Add Comment" %>
+  <%# end %>  -->
 
-<ul><%= render partial: "comments/comment", collection: @pattern.comments %></ul><br />
+  <%= render 'comments/comments' %>
+
+<%= form_for(@comment, :url => pattern_comments_path(@pattern)) do |f| %>
+  <%= f.text_area :content %>
+
+  <p><%= f.submit %></p>
+
+<% end %>
+
+<!--  <form>
+    <textarea></textarea>
+
+    <p><input type="submit"></p>
+  </form> -->
+
+<!-- <ul><%#= render partial: "comments/comment", collection: @pattern.comments %></ul><br /> -->
 
 <h4>Click the button below if you want to <i>favorite</i> this </h4>
 <h4>pattern or <i>remove</i> from favorite patterns: </h4>
@@ -42,20 +57,7 @@
   <% end %>
   <br />
 
-
-
 <h4>This pattern has been favorited <%= @pattern.favorites_count %> times. </h4><br />
-
-<!-- Not sure how to do this yet, but would like to display favorites with 'next' button
-<p>
-  <%= link_to "Favorite Patterns", favorite_patterns_path(@pattern) %>
-</p>
--->
-
-<!--<div class="favs">
-  <ul>
-  </ul>
-<div> -->
 
 <% if current_user == @pattern.user %>
   <br />

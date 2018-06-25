@@ -29,39 +29,18 @@ $(function() {
       `
       return patternHtml
     }
+})
 
-    $(document).on('click', 'next_pattern', function() {
-      let id = $(this).attr('data-id')
-      fetch(`patterns/${id}/next`)
+$(function() {
+  $("form#new_comment").on("submit", function(e) {
+      e.preventDefault();
 
-    })
-
-  $(".favorite").on('click', function(e) {
-    e.preventDefault();
-
-    $.ajax({
-      method: 'get',
-      //type: ($("input[name='_method']").val() || this.method),
-      url: this.href,
-      dataType: 'json',
-      data: $(this).serialize(),
-    }).success(function( response ) {
-      $(".favorite").html("")
-        let pattern = jQuery(response)
-        let newPattern = new Pattern(pattern)
-        let patternHtml = newPattern.formatShow()
-        $('#favorite_pattern').append(patternHtml)
-    });
-  });
-
-   Pattern.prototype.formatShow = function() {
-     let patternHtml = `
-     <h3>${this.name}</h3>
-     <button class="next_pattern">Next</button>
-     `
-     return patternHtml
-   }
-
+//    $.ajax({
+//      type: ($("input[name='_method']").val() || this.method),
+//      url: this.action,
+//      data: $(this).serialize(),
+//    }).success(function( params ) {
+  })
 })
 
 //$(function() {
@@ -76,7 +55,10 @@ $(function() {
         //var pattern = params;
         //$(".fav").text(pattern["delete"]);
 //         if ( params === "delete" ) {
-          //   $("form.button_to").html("hello")
+             //$("form.button_to").html("hello")
+//    })
+//  })
+//})
            //$('#remove').on('click', function() {
            	//$('.favorite').remove();
              //$('#remove').addClass('hidden')

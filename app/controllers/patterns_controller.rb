@@ -15,6 +15,7 @@ before_action :set_pattern, only: [:show, :edit, :update, :destroy, :next]
   def show
     @pattern = Pattern.find(params[:id])
     @comments = @pattern.comments
+    @comment = @pattern.comments.build
     @favorited = FavoritePattern.find_by(user:current_user, pattern: @pattern).present?
 
     respond_to do |format|
