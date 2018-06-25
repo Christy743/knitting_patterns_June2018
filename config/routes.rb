@@ -13,9 +13,9 @@ Rails.application.routes.draw do
     resources :comments
   end
 
-  resources :comments do
-    resources :comments
-  end
+  #resources :comments do
+  #  resources :comments
+  #end
 
   resources :patterns do
     put :favorite, on: :member
@@ -27,5 +27,5 @@ Rails.application.routes.draw do
 
   post "favorite_patterns/:pattern_id" => "favorite_patterns#create", :as => :favorited
 
-  get 'patterns/:id/next', to: 'patterns#next'
+  #get 'patterns/:id/next', to: 'patterns#next'
 end

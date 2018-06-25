@@ -21,7 +21,7 @@
   <%= render 'comments/comments' %>
 </div>
 
-<%= form_for([@pattern, @comment]) do |f| %>
+<%= form_for(@comment, :url => pattern_comments_path(@pattern)) do |f| %>
 <%= f.text_area :content %>
 
 <p><%= f.submit "Create Comment" %></p>

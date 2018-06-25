@@ -6,14 +6,15 @@ class CommentsController < ApplicationController
     @comments = @pattern.comments
   end
 
-  def new
-    @comment = Comment.new
-  end
+  #def new
+  #  @comment = Comment.new
+  #end
 
   def create
     @comment = @pattern.comments.build(comments_params)
     #@comment = @commentable.comments.build(comment_params)
     if @comment.save
+      #render "patterns/show"
       render "comments/show", :layout => false
     else
       render "patterns/show"

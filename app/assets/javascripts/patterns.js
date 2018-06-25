@@ -40,15 +40,17 @@ $(function() {
       url: this.action,
       data: $(this).serialize(),
       success: function( response ){
+        console.log(response)
         $("#comment_content").val("");
         var $ol = $("div.comments ol")
         $ol.append(response)
-      //console.log(response)
       }
     })
   })
 })
 
+//Code below is kept to discuss how to make this function work with the
+// 'add to favorites' and 'remove from favorites' button
 //$(function() {
 //  $("form.button_to").on("submit", function(e) {
 //      e.preventDefault();
