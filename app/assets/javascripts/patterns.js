@@ -40,9 +40,10 @@ $(function() {
       url: this.action,
       data: $(this).serialize(),
       success: function( response ){
-        var $ul = $("div.comments ul")
-        $ul.append(response)
         $("#comment_content").val("");
+        //var $ul = $("div.comments ul")
+        //$ul.append(response)
+        $("div.comments ul").append(response);
       }
     })
   })
