@@ -4,6 +4,11 @@ class CommentsController < ApplicationController
 
   def index
     @comments = @pattern.comments
+
+    respond_to do |format|
+     format.html
+     format.json {render json: @comments}
+    end
   end
 
   #def new
@@ -14,10 +19,27 @@ class CommentsController < ApplicationController
     @comment = @pattern.comments.build(comments_params)
     #@comment = @commentable.comments.build(comment_params)
     if @comment.save
+
+      #respond_to do |format|
+      # format.html
+      # format.json {render json: @comment}
+      #end
+      render json: @comment  #this is the line that will render my comment and clear the text_area
       #render "patterns/show"
-      render "comments/show", :layout => false
+      #render "comments/show", :layout => false #this does not work to clear my text_area
     else
       render "patterns/show"
+    end
+  end
+
+  def show
+    @comment = Comment.find(params[:id])
+
+    #render json: @comment
+
+    respond_to do |format|
+     format.html
+     format.json {render json: @comment}
     end
   end
 

@@ -38,12 +38,13 @@ $(function() {
     $.ajax({
       type: this.method,
       url: this.action,
+      dataType: 'json',
       data: $(this).serialize(),
       success: function( response ){
-        $("#comment_content").val("");
-        //var $ul = $("div.comments ul")
-        //$ul.append(response)
+        $("#comment_content").val(null);
         $("div.comments ul").append(response);
+
+        window.location.reload();
       }
     })
   })

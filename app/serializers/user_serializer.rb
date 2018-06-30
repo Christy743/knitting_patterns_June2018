@@ -1,3 +1,5 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :patterns
+  attributes :patterns, :name
+
+  has_many :patterns
 end
