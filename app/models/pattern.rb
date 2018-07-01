@@ -1,6 +1,6 @@
 class Pattern < ActiveRecord::Base
   belongs_to :user
-  has_many :comments  #, as: :commentable
+  has_many :comments
   has_many :favorite_patterns, dependent: :destroy
   has_many :favorited_by, through: :favorite_patterns, source: :user
 
@@ -21,16 +21,5 @@ class Pattern < ActiveRecord::Base
       end
     end
   end
-
-  #def next
-  #  comment = Comment.where("id > ?", id).first
-#
-#    if comment
-#      comment
-#    else
-#      Comment.first
-#    end
-#
-#  end
 
 end
