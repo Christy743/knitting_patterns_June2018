@@ -41,15 +41,14 @@ Open a web browser and navigate to:
   Pattern:
     ```
     belongs_to :user
-    has_many :comments, as: :commentable
+    has_many :comments
     has_many :favorite_patterns, dependent: :destroy
     has_many :favorited_by, through: :favorite_patterns, source: :user
     ```
 
   Comment:
     ```
-    belongs_to :commentable, polymorphic: true
-    has_many :comments, as: :commentable
+    belongs_to patterns
     ```
 
   FavoritePattern:
