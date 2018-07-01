@@ -22,15 +22,15 @@ class Pattern < ActiveRecord::Base
     end
   end
 
-  def next
-    pattern = Pattern.where("id > ?", id).first
-
-    if pattern
-      pattern
-    else
-      Pattern.first
-    end
-
-  end
+  #def next
+  #  comment = Comment.where("id > ?", id).first
+#
+#    if comment
+#      comment
+#    else
+#      Comment.first
+#    end
+#
+#  end
 
 end

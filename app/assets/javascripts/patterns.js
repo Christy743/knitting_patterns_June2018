@@ -63,3 +63,30 @@ $(function() {
     })
   })
 })
+
+$(function() {
+  $(".comments li").each(function(e) {
+    if (e != 0)
+      $(this).hide();
+  });
+
+  $(".next").click(function() {
+    if ($(".comments li:visible").next().length != 0)
+        $(".comments li:visible").next().show().prev().hide();
+    else {
+        $(".comments li:visible").hide();
+        $(".comments li:first").show();
+    }
+    return false;
+  });
+
+  $(".prev").click(function() {
+    if ($(".comments li:visible").prev().length !=0)
+        $(".comments li:visible").prev().show().next().hide();
+    else {
+        $(".comments li:visible").hide();
+        $(".comments li:last").show();
+    }
+    return false;
+  });
+});

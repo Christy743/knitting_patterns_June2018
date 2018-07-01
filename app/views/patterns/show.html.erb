@@ -21,6 +21,11 @@
   <%= render 'comments/comments' %>
 </div>
 
+<%= link_to "Next Comment", pattern_comment_url(@pattern), :class => "next" %>
+<br></br>
+<%= link_to "Previous Comment", pattern_comment_url(@pattern), :class => "prev" %>
+<br></br>
+
 <%= form_for(@comment, :url => pattern_comments_path(@pattern)) do |f| %>
 <%= f.text_area :content %>
 

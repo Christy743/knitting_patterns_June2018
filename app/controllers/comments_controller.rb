@@ -32,6 +32,11 @@ class CommentsController < ApplicationController
     end
   end
 
+  def next
+    @next_comment = @comment.next
+    render json: @next_comment
+  end
+
   def show
     @comment = Comment.find(params[:id])
 
