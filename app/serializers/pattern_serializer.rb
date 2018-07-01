@@ -6,7 +6,6 @@ class PatternSerializer < ActiveModel::Serializer
   has_many :favorite_patterns
 
   def user
-    #binding.pry
     object.user
   end
 
