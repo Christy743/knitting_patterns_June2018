@@ -35,14 +35,6 @@
 <h4>Click the button below if you want to <i>favorite</i> this </h4>
 <h4>pattern or <i>remove</i> from favorite patterns: </h4>
 
-<!--<div id="add"></div>
-<div id="remove" class="hidden"></div> -->
-
-<!-- <button id='add'>Add</button>
-<button id='remove' class='hidden'>Remove</button> -->
-
-<!-- <div id="root"></div> -->
-
   <% if !@favorited %>
     <%= button_to "Add to Favorites", favorite_pattern_path(@pattern), method: :put %>
   <% else %>
