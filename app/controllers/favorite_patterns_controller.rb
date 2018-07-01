@@ -5,7 +5,6 @@ class FavoritePatternsController < ApplicationController
     if current_user.favorite_patterns.save
       redirect_to pattern_path(@pattern)
     else
-    #render 'create.js', :layout => false
     render 'patterns/show', :layout => false
     end
   end
