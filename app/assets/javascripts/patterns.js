@@ -34,7 +34,6 @@ $(function() {
  $(function() {
    $("#new_comment").on("submit", function(e) {
      e.preventDefault();
-     //history.pushState(null, null, "comments")
 
      $.ajax({
        type: this.method,
@@ -42,41 +41,21 @@ $(function() {
        dataType: 'json',
        data: $(this).serialize(),
      }).success(function( response ){
-       
-       debugger
        $("#comment_content").val(null);
-       //var $ul = $("div.comments ul");
-       //let comments = $ul.each(comment => {
-      //   let newComment = new Comment(comment)
-      //   debugger
-       })
-      // $ul.append(response);
+       var $ul = $("div.comments ul");
+       $ul.append(response.content);
+       //var commentContent = JSON.stringify(response);
        //debugger
-         //$("#new_comment").html("Hello World!")
-         //let comments = response;
-         //let newComment = new Comment(comment)
-
-         //debugger
-         //let comments = response.forEach(comment => {
-          // debugger
-          // let newComment = new Comment(comment)
-          // let commentHTML = newComment.formatIndex()
-           //$("div.comments ul").append(commentHTML);
-           //$("#comment_content").val(null);
-         //});
+       //comment.appendTo($("div.comments ul"));
+       //var $ul = $(response.content).appendTo($("div.comments ul"));
+       //var $ul = $("div.comments ul");
+       //debugger
+       //$ul.append(response);
+     });
 
 
-          // function Comment(comment) {
-          //   this.content = comment.content
-          // }
-
-          // Comment.prototype.formatIndex = function() {
-          //    let commentHTML = `
-          //      <li ${this.content}"></li>
-          //      `
-          //      return commentHTML
-          // }
-   })
+  });
+  //$('div.comments li').show();
  })
 
 $(function() {
