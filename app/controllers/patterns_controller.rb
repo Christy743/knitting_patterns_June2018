@@ -59,14 +59,29 @@ before_action :set_pattern, only: [:show, :edit, :update, :destroy, :next]
   end
 
   def favorite
+    #binding.pry
     @pattern = Pattern.find(params[:id])
       current_user.favorites << @pattern
+
+      #render html: unfavorite
+
+      respond_to do |format|
+        format.html { render action: 'unfavorite' }
+      end
   end
+
+#favorite a pattern, than the favorite action in the controller needs to send back the html form to unfavorite it
 
   def unfavorite
     #binding.pry
     @pattern = Pattern.find(params[:id])
       current_user.favorites.delete(@pattern)
+
+      #render html: favorite
+
+      respond_to do |format|
+        format.html { render action: 'favorite' }
+      end
   end
 
   private

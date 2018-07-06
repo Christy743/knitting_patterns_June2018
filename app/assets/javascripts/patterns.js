@@ -43,19 +43,9 @@ $(function() {
      }).success(function( response ){
        $("#comment_content").val(null);
        var $ul = $("div.comments ul");
-       $ul.append(response.content);
-       //var commentContent = JSON.stringify(response);
-       //debugger
-       //comment.appendTo($("div.comments ul"));
-       //var $ul = $(response.content).appendTo($("div.comments ul"));
-       //var $ul = $("div.comments ul");
-       //debugger
-       //$ul.append(response);
+       $ul.append(`<li>response.content</li>`);
      });
-
-
   });
-  //$('div.comments li').show();
  })
 
 $(function() {
@@ -67,7 +57,14 @@ $(function() {
       url: this.action,
       data: $(this).serialize(),
     }).success(function( params ) {
-      window.location.reload();
+      if (params === "_method=put") {
+        return "This is added to favorites.";
+      } else {
+        return "This is deleted from favorites.";
+      };
+      //debugger
+      //$("form.button_to").toggle();
+      //debugger
     })
   })
 })
