@@ -42,32 +42,11 @@ $(function() {
        data: $(this).serialize(),
      }).success(function( response ){
        $("#comment_content").val(null);
-       var $ul = $("div.comments ul");
-       $ul.append(`<li>response.content</li>`);
+       $("div#comments ul").append(`<li>${response.content}</li>`);
+       $("input[type=submit]").removeAttr('disabled');
      });
   });
- })
-
-$(function() {
-  $("form.button_to").on("submit", function(e) {
-      e.preventDefault();
-
-    $.ajax({
-      type: this.method,
-      url: this.action,
-      data: $(this).serialize(),
-    }).success(function( params ) {
-      if (params === "_method=put") {
-        return "This is added to favorites.";
-      } else {
-        return "This is deleted from favorites.";
-      };
-      //debugger
-      //$("form.button_to").toggle();
-      //debugger
-    })
-  })
-})
+});
 
 // $(function() {
 //   $(".comments li").each(function(e) {
