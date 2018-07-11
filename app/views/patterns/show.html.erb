@@ -1,4 +1,8 @@
-<br />
+<p><%= link_to "Next Pattern", patterns_url(@pattern.next), :class => "next" %></p>
+<p><%= link_to "Previous Pattern", patterns_url(@pattern.prev), :class => "prev" %></p>
+
+<div class="patts">
+
 <h2><%= @pattern.name %></h2>
 
 <h3>Materials and notions:</h3>
@@ -15,16 +19,13 @@
 <h3>Directions: </h3>
   <p><%= @pattern.content %></p>
 
+</div>
+
   <h3>Comments</h3>
 
 <div id="comments">
   <%= render 'comments/comments' %>
 </div>
-
-<!-- <%#= link_to "Next Comment", pattern_comment_url(@pattern), :class => "next" %>
-<br></br>
-<%#= link_to "Previous Comment", pattern_comment_url(@pattern), :class => "prev" %>
-<br></br> -->
 
 <%= form_for(@comment, :url => pattern_comments_path(@pattern)) do |f| %>
 <%= f.text_area :content %>
@@ -52,3 +53,4 @@
 <% end %>
 <br />
 <%= link_to "Back to Pattern List", patterns_path %>
+<br></br>

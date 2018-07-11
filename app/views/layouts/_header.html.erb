@@ -5,7 +5,7 @@
         <% if current_user %>
           <%= link_to "Sign Out", signout_path, method: :delete %><br />
           <%= link_to "Profile", current_user %><br />
-          <%= link_to "Home Page", root_path %><br />
+          <%= link_to "Home Page", root_path %><br></br>
         <% else %>
           <br />
           <%= link_to "Sign In", signin_path %><br />

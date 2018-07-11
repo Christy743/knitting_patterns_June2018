@@ -22,4 +22,18 @@ class Pattern < ActiveRecord::Base
     end
   end
 
+  def next
+    pattern = Pattern.where("id > ?", id).first
+
+    if pattern 
+      pattern
+    else
+      Pattern.first
+    end
+  end
+
+  def prev
+    Pattern.where("id < ?", id).first
+  end
+
 end

@@ -21,6 +21,8 @@ $(function() {
     function Pattern(pattern) {
       this.name = pattern.name
       this.id = pattern.id
+      this.content = pattern.content
+      this.comments = pattern.comments
     }
 
     Pattern.prototype.formatIndex = function() {
@@ -48,29 +50,49 @@ $(function() {
   });
 });
 
-// $(function() {
-//   $(".comments li").each(function(e) {
-//     if (e != 0)
-//       $(this).hide();
-//   });
-//
-//   $(".next").click(function() {
-//     if ($(".comments li:visible").next().length != 0)
-//         $(".comments li:visible").next().show().prev().hide();
-//     else {
-//         $(".comments li:visible").hide();
-//         $(".comments li:first").show();
-//     }
-//     return false;
-//   });
-//
-//   $(".prev").click(function() {
-//     if ($(".comments li:visible").prev().length !=0)
-//         $(".comments li:visible").prev().show().next().hide();
-//     else {
-//         $(".comments li:visible").hide();
-//         $(".comments li:last").show();
-//     }
-//     return false;
-//   });
-// });
+//$(function() {
+//  $(".next").on("click", function(e) {
+//    e.preventDefault();
+
+//    $.ajax({
+//      type: ($("input[name='_method']").val() || this.method),
+//      url: this.href,
+//      dataType: 'json',
+//      data: $(this).serialize(),
+//    }).success(function(data){
+//      console.log(data)
+//    })
+//  });
+//})
+
+//$(document).on('click', '.next', function() {
+//  let id = $(this).attr('data-id');
+//  fetch(`patterns/${id}/next`)
+//})
+
+  $(function() {
+    $("#patt_list").each(function(e) {
+      if (e != 0)
+        $(this).hide();
+    });
+
+    $(".next").click(function() {
+      if ($(".patts li:visible").next().length != 0)
+          $(".patts li:visible").next().show().prev().hide();
+      else {
+          $(".patts li:visible").hide();
+          $(".patts li:first").show();
+      }
+      return false;
+    });
+
+    $(".prev").click(function() {
+      if ($(".patts li:visible").prev().length !=0)
+          $(".patts li:visible").prev().show().next().hide();
+      else {
+          $(".patts li:visible").hide();
+          $(".patts li:last").show();
+      }
+      return false;
+    });
+  });

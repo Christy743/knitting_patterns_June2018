@@ -39,6 +39,16 @@ before_action :set_pattern, only: [:show, :edit, :update, :destroy, :next]
     end
   end
 
+  def next
+    @next_pattern = @pattern.next
+    render json: @next_pattern
+  end
+
+  def prev
+    @prev_pattern = @pattern.prev
+    render json: @prev_pattern
+  end
+
   def edit
     @pattern = Pattern.find(params[:id])
   end
