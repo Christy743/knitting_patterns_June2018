@@ -92,8 +92,9 @@ $(function() {
 
   Pattern.prototype.formatIndex = function() {
     let patternHtml = `
-      <a href="/patterns/${this.id}" data-id="${this.id}" class="show_pattern"><li>${this.content}</li></a>
+      <a href="/patterns/${this.id}" data-id="${this.id}" class="show_pattern"><li>More...</li></a>   
     `
+                                                                            //<li>${this.content}</li>
     return patternHtml
   }
 })

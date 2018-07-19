@@ -15,6 +15,29 @@
  */
 
  /* forms */
+
+ .wrapper {
+   width: 500px;
+    overflow: auto;
+   position: relative;
+ }
+
+ #more {
+
+  position: absolute;
+   top: 0;
+   left: 150px;
+   right: 0;
+ }
+
+#all_patterns {
+  width: 250px;
+  float: left;
+}
+
+
+
+
  body,
  html {
    width: 100%;

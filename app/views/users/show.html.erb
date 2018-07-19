@@ -28,6 +28,8 @@
   <!--  <%= link_to "More...", pattern_path, :class => "more_info" %>
     <br></br> -->
 
+  <div class="wrapper">
+
     <div id="all_patterns">
       <%= yield %>
     </div>
@@ -37,5 +39,7 @@
     <div id="more">
       <%= yield %>
     </div>
+
+  </div>
 
 <% end %>
