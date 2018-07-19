@@ -16,13 +16,13 @@
 
  /* forms */
 
- .wrapper {
+ /*.wrapper {
    width: 500px;
     overflow: auto;
    position: relative;
  }
 
- #more {
+ .more_info {
 
   position: absolute;
    top: 0;
@@ -33,7 +33,7 @@
 #all_patterns {
   width: 250px;
   float: left;
-}
+} */
 
 
 
