@@ -2,8 +2,11 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
 
   def index
-    @patterns = Pattern.all
+    @patterns = @user.patterns
+    #@patterns = Pattern.all
     @favorite_patterns = FavoritePattern.all
+
+    render :layout => false
 
     respond_to do |format|
      format.html {render :index}
@@ -15,6 +18,11 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @patterns = @user.patterns
     @user.favorites = current_user.favorites
+
+    respond_to do |format|
+      format.html
+      format.json {render json: @pattern}
+    end
   end
 
   def new

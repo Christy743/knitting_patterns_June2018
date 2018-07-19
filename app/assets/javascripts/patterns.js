@@ -9,8 +9,19 @@ $(function() {
       dataType: 'json',
       data: $(this).serialize(),
     }).success(function( response ) {
+      //Put the list in alphabetical order using sort?
       $(".pattern_list").text("All Patterns")
-        let patterns = response.forEach(pattern => {
+        var patt_array = response.sort(function(pat1, pat2) {
+          if (pat1["name"] < pat2["name"]) {
+            return -1;
+          }
+          if (pat1["name"] > pat2["name"]) {
+            return 1;
+          }
+            return 0;
+        });
+        //debugger
+        let patterns = patt_array.forEach(pattern => {
           let newPattern = new Pattern(pattern)
           let patternHtml = newPattern.formatIndex()
           $('#all_patterns').append(patternHtml)
@@ -27,7 +38,7 @@ $(function() {
 
     Pattern.prototype.formatIndex = function() {
       let patternHtml = `
-        <a href="/patterns/${this.id}" data-id="${this.id}" class="show_pattern"><h1>${this.name}</h1></a>
+        <a href="/patterns/${this.id}" data-id="${this.id}" class="show_pattern"><li>${this.name}</li></a>
       `
       return patternHtml
     }
@@ -50,49 +61,39 @@ $(function() {
   });
 });
 
-//$(function() {
-//  $(".next").on("click", function(e) {
-//    e.preventDefault();
+$(function() {
+  $(".pattern_list").on("click", function(e) {
+    e.preventDefault();
 
-//    $.ajax({
-//      type: ($("input[name='_method']").val() || this.method),
-//      url: this.href,
-//      dataType: 'json',
-//      data: $(this).serialize(),
-//    }).success(function(data){
-//      console.log(data)
-//    })
-//  });
-//})
-
-//$(document).on('click', '.next', function() {
-//  let id = $(this).attr('data-id');
-//  fetch(`patterns/${id}/next`)
-//})
-
-  $(function() {
-    $("#patt_list").each(function(e) {
-      if (e != 0)
-        $(this).hide();
-    });
-
-    $(".next").click(function() {
-      if ($(".patts li:visible").next().length != 0)
-          $(".patts li:visible").next().show().prev().hide();
-      else {
-          $(".patts li:visible").hide();
-          $(".patts li:first").show();
-      }
-      return false;
-    });
-
-    $(".prev").click(function() {
-      if ($(".patts li:visible").prev().length !=0)
-          $(".patts li:visible").prev().show().next().hide();
-      else {
-          $(".patts li:visible").hide();
-          $(".patts li:last").show();
-      }
-      return false;
+    $.ajax({
+      type: "GET",
+      url: this.href,
+      dataType: 'json',
+    }).success(function( response ){
+      //debugger
+      //$(".more_info").hide();
+      //var id = $(this).response("id");
+      //$("div#more").append(response);
+      //$("input[type=click]").removeAttr('disabled');
+      let patterns = response.forEach(pattern => {
+        let newPattern = new Pattern(pattern)
+        let patternHtml = newPattern.formatIndex()
+        $('#more').append(patternHtml)
+      });
     });
   });
+
+  function Pattern(pattern) {
+    this.name = pattern.name
+    this.id = pattern.id
+    this.content = pattern.content
+    this.comments = pattern.comments
+  }
+
+  Pattern.prototype.formatIndex = function() {
+    let patternHtml = `
+      <a href="/patterns/${this.id}" data-id="${this.id}" class="show_pattern"><li>${this.content}</li></a>
+    `
+    return patternHtml
+  }
+})

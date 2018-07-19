@@ -1,5 +1,5 @@
 class PatternSerializer < ActiveModel::Serializer
-  attributes :id, :name
+  attributes :id, :name, :content
 
   belongs_to :user, serializer: PatternUserSerializer
   has_many :comments

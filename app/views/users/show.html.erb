@@ -23,9 +23,18 @@
 <br />
 
     <%= link_to "List of All Patterns", patterns_path, :class => "pattern_list" %>
-    <br />
+    <br></br>
+
+  <!--  <%= link_to "More...", pattern_path, :class => "more_info" %>
+    <br></br> -->
 
     <div id="all_patterns">
+      <%= yield %>
+    </div>
+
+    <br></br>
+
+    <div id="more">
       <%= yield %>
     </div>
 

@@ -1,8 +1,10 @@
 class PatternsController < ApplicationController
-before_action :set_pattern, only: [:show, :edit, :update, :destroy, :next]
+before_action :set_pattern, only: [:show, :edit, :update, :destroy]
 
   def index
     @patterns = Pattern.all
+    #@content = Pattern.content
+    #render 'patterns/index', :layout => false
 
     respond_to do |format|
      format.html
@@ -39,15 +41,10 @@ before_action :set_pattern, only: [:show, :edit, :update, :destroy, :next]
     end
   end
 
-  def next
-    @next_pattern = @pattern.next
-    render json: @next_pattern
-  end
-
-  def prev
-    @prev_pattern = @pattern.prev
-    render json: @prev_pattern
-  end
+   # def content
+   #   pattern = Pattern.find(params[:id])
+   #   render plain: pattern.content
+   # end
 
   def edit
     @pattern = Pattern.find(params[:id])
